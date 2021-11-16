@@ -1,2 +1,12 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<h1>ユーザー登録</h1>
+<%= form_with model: @user, local: true do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :gender %>
+  <%= f.select :gender, User.genders.keys.to_a, {} %>
+  <%= f.label :age %>
+  <%= f.number_field :age %>
+  <%= f.label :physical_activity_level %>
+  <%= f.select :physical_activity_level, User.physical_activity_levels.keys.to_a, {} %>
+  <%= f.submit nil %>
+<% end %>
