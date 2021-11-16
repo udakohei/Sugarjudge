@@ -2,12 +2,15 @@ ja:
   activerecord:
     model:
       user: 'ユーザー'
+      meal: '食事'
     attributes:
       user:
         name: '名前'
         gender: '性別'
         age: '年齢'
         physical_activity_level: '身体活動レベル'
+      meal:
+        meal_image: '食事写真'
   enums:
     user:
       gender:

@@ -3,3 +3,7 @@ ja:
     create:
       success: 'ユーザーを登録しました'
       failure: 'ユーザーを登録できませんでした'
+  meals:
+    create:
+      success: '食事を登録しました'
+      failure: '食事を登録できませんでした'
