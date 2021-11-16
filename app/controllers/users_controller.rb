@@ -17,4 +17,3 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :gender, :age, :physical_activity_level)
   end
 end
-e
