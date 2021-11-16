@@ -1,0 +1,25 @@
+<div class="container">
+  <h1 class="mt-3">ユーザー登録</h1>
+  <%= form_with model: @user, local: true do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="mb-3">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :gender %>
+      <%= f.select :gender, User.genders_i18n.invert, {}, class: 'form-control'%>
+    </div>
+    <div class="mb-3">
+      <%= f.label :age %>
+      <%= f.number_field :age, class: 'form-control' %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :physical_activity_level %>
+      <%= f.select :physical_activity_level, User.physical_activity_levels_i18n.invert, {}, class: 'form-control'%>
+    </div>
+    <div class="mb-3">
+      <%= f.submit nil, class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>

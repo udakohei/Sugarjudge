@@ -1,0 +1,5 @@
+ja:
+  users:
+    create:
+      success: 'ユーザーを登録しました'
+      failure: 'ユーザーを登録できませんでした'
