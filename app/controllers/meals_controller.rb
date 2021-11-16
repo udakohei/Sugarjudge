@@ -5,7 +5,7 @@ class MealsController < ApplicationController
 
   def create
     begin
-        @meal = Meal.new(meal_params)
+        @meal = current_user.meals.build(meal_params)
       if @meal.save
         redirect_to root_path, success: t('.success')
       else

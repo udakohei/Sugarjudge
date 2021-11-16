@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :meals, dependent: :destroy
+
   enum gender: { male: 0, female: 1 }
   enum physical_activity_level: { low: 0, normal: 1, high: 2 }
 
