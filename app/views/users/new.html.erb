@@ -1,12 +1,24 @@
-<h1>ユーザー登録</h1>
-<%= form_with model: @user, local: true do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :gender %>
-  <%= f.select :gender, User.genders.keys.to_a, {} %>
-  <%= f.label :age %>
-  <%= f.number_field :age %>
-  <%= f.label :physical_activity_level %>
-  <%= f.select :physical_activity_level, User.physical_activity_levels.keys.to_a, {} %>
-  <%= f.submit nil %>
-<% end %>
+<div class="container">
+  <h1 class="mt-3">ユーザー登録</h1>
+  <%= form_with model: @user, local: true do |f| %>
+    <div class="mb-3">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :gender %>
+      <%= f.select :gender, User.genders.keys.to_a, {}, class: 'form-control' %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :age %>
+      <%= f.number_field :age, class: 'form-control' %>
+    </div>
+    <div class="mb-3">
+      <%= f.label :physical_activity_level %>
+      <%= f.select :physical_activity_level, User.physical_activity_levels.keys.to_a, {}, class: 'form-control' %>
+    </div>
+    <div class="mb-3">
+      <%= f.submit nil, class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
