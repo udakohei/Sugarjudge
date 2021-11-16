@@ -8,3 +8,12 @@ ja:
         gender: '性別'
         age: '年齢'
         physical_activity_level: '身体活動レベル'
+  enums:
+    user:
+      gender:
+        male: '男性'
+        female: '女性'
+      physical_activity_level:
+        low: '低い'
+        normal: '普通'
+        high: '高い'

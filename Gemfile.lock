@@ -74,6 +74,8 @@ GEM
     concurrent-ruby (1.1.9)
     crass (1.0.6)
     debug_inspector (1.1.0)
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
     erubi (1.10.0)
     erubis (2.7.0)
     ffi (1.15.4)
@@ -224,6 +226,7 @@ DEPENDENCIES
   binding_of_caller
   bootsnap (>= 1.4.2)
   byebug
+  enum_help
   jbuilder (~> 2.7)
   listen (~> 3.2)
   mysql2 (>= 0.4.4)
