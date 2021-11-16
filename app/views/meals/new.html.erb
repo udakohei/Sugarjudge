@@ -1,0 +1,11 @@
+<div class="container">
+  <h1 class="mt-3">写真アップロード</h1>
+  <%= form_with model: @meal, local: true do |f| %>
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="mb-3">
+      <%= f.label :meal_image %>
+      <%= f.file_field :meal_image, class: 'form-control', accept: 'image/*' %>
+    </div>
+    <%= f.submit nil, class: 'btn btn-primary' %>
+  <% end %>
+</div>
