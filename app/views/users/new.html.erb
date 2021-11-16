@@ -7,7 +7,7 @@
     </div>
     <div class="mb-3">
       <%= f.label :gender %>
-      <%= f.select :gender, User.genders_i18n.invert%>
+      <%= f.select :gender, User.genders_i18n.invert, {}, class: 'form-control'%>
     </div>
     <div class="mb-3">
       <%= f.label :age %>
@@ -15,7 +15,7 @@
     </div>
     <div class="mb-3">
       <%= f.label :physical_activity_level %>
-      <%= f.select :physical_activity_level, User.physical_activity_levels_i18n.invert%>
+      <%= f.select :physical_activity_level, User.physical_activity_levels_i18n.invert, {}, class: 'form-control'%>
     </div>
     <div class="mb-3">
       <%= f.submit nil, class: 'btn btn-primary' %>
