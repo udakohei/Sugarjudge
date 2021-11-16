@@ -12,8 +12,8 @@ class MealsController < ApplicationController
         flash.now[:danger] = t('.failure')
         render :new
       end
-    rescue ActionController::ParameterMissing 
-      redirect_to new_meal_path, danger: t('.failure')
+    rescue ActionController::ParameterMissing
+      redirect_to new_meal_path, danger: t('.need_image')
     end
   end
 
