@@ -4,6 +4,6 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :gender, presence: true
-  validates :age, presence: true
+  validates :age, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 130 }
   validates :physical_activity_level, presence: true
 end
