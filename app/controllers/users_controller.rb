@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to root_path, success: t('.success')
+      redirect_to new_meal_path, success: t('.success')
     else
       flash.now[:danger] = t('.failure')
       render :new
