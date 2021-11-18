@@ -23,7 +23,11 @@ class MealsController < ApplicationController
   end
 
   def update
-    
+    @meal = current_user.meals.find(params[:id])
+    food_ids = params[:meal][:food_ids]
+    food_ids.each do |food_id|
+      @meal.used_foods.create(food: Food.find_by(id: food_id))
+    end
   end
 
   private
