@@ -31,7 +31,7 @@ class MealsController < ApplicationController
     food_ids.shift
     if food_ids.present?
       food_ids.each do |food_id|
-        @meal.used_foods.create!(food: Food.find(food_id))
+        @meal.used_foods.find_or_create_by!(food: Food.find(food_id))
       end
       @meal.update!(balance_of_payments: @meal.balance_of_payments)
       redirect_to meal_path(@meal), success: t('.success')
