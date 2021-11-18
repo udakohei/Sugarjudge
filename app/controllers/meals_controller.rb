@@ -1,4 +1,7 @@
 class MealsController < ApplicationController
+  def show
+    @meal = current_user.meals.find(params[:id])
+  end
   def new
     @meal = Meal.new
   end
@@ -30,7 +33,8 @@ class MealsController < ApplicationController
       food_ids.each do |food_id|
         @meal.used_foods.create!(food: Food.find(food_id))
       end
-      redirect_to edit_meal_path(@meal), success: t('.success')
+      @meal.update!(balance_of_payments: @meal.balance_of_payments)
+      redirect_to meal_path(@meal), success: t('.success')
     else
       redirect_to edit_meal_path(@meal), danger: t('.need_select')
     end

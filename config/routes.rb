@@ -3,5 +3,5 @@ Rails.application.routes.draw do
   root 'top#index'
 
   resources :users, only: %i[new create]
-  resources :meals, only: %i[new create edit update]
+  resources :meals, only: %i[new create edit update show]
 end
