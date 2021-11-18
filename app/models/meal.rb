@@ -6,4 +6,16 @@ class Meal < ApplicationRecord
   mount_uploader :meal_image, MealImageUploader
 
   validates :meal_image, presence: true
+
+  def calorie_intake
+    sum = 0
+    foods.each do |food|
+      sum += food.calorie
+    end
+    sum
+  end
+
+  def balance_of_payments
+    user.required_calorie - calorie_intake
+  end
 end
