@@ -9,7 +9,7 @@
 Genre.create!(name: 'ジャンル１')
 Genre.create!(name: 'ジャンル２')
 
-30.times do
+10.times do
   Food.create!(
     name: Faker::Food.unique.dish,
     calorie: Faker::Number.number(digits: 3),
