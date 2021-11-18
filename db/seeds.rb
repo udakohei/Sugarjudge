@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Genre.create!(name: 'ジャンル１')
+Genre.create!(name: 'ジャンル２')
+
+30.times do
+  Food.create!(
+    name: Faker::Food.unique.dish,
+    calorie: Faker::Number.number(digits: 3),
+    role: :concrete,
+    genre: Genre.first
+  )
+  Food.create!(
+    name: Faker::Food.unique.ingredient,
+    calorie: Faker::Number.number(digits: 3),
+    role: :concrete,
+    genre: Genre.last
+  )
+end

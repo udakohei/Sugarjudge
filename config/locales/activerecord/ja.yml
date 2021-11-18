@@ -3,6 +3,8 @@ ja:
     model:
       user: 'ユーザー'
       meal: '食事'
+      genre: 'ジャンル'
+      food: '食品'
     attributes:
       user:
         name: '名前'
@@ -11,6 +13,12 @@ ja:
         physical_activity_level: '身体活動レベル'
       meal:
         meal_image: '食事写真'
+      genre:
+        name: 'ジャンル名'
+      food:
+        name: '食品名'
+        calorie: 'カロリー'
+        role: '役割'
   enums:
     user:
       gender:
@@ -20,3 +28,7 @@ ja:
         low: '低い'
         normal: '普通'
         high: '高い'
+    food:
+      role:
+        concrete: '具体的'
+        abstract: '抽象的'

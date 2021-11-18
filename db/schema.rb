@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_16_141637) do
+ActiveRecord::Schema.define(version: 2021_11_18_023924) do
+
+  create_table "foods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "calorie", null: false
+    t.integer "role", null: false
+    t.bigint "genre_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["genre_id"], name: "index_foods_on_genre_id"
+    t.index ["name"], name: "index_foods_on_name", unique: true
+  end
+
+  create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_genres_on_name", unique: true
+  end
 
   create_table "meals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "meal_image", null: false
@@ -22,6 +40,16 @@ ActiveRecord::Schema.define(version: 2021_11_16_141637) do
     t.index ["user_id"], name: "index_meals_on_user_id"
   end
 
+  create_table "used_foods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "meal_id", null: false
+    t.bigint "food_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["food_id"], name: "index_used_foods_on_food_id"
+    t.index ["meal_id", "food_id"], name: "index_used_foods_on_meal_id_and_food_id", unique: true
+    t.index ["meal_id"], name: "index_used_foods_on_meal_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.integer "gender", null: false
@@ -31,5 +59,8 @@ ActiveRecord::Schema.define(version: 2021_11_16_141637) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "foods", "genres"
   add_foreign_key "meals", "users"
+  add_foreign_key "used_foods", "foods"
+  add_foreign_key "used_foods", "meals"
 end
