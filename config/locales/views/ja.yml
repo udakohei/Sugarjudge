@@ -8,3 +8,6 @@ ja:
       success: '食事を登録しました'
       failure: '食事を登録できませんでした'
       need_image: '食事写真をアップロードしてください'
+    update:
+      success: '選択できました'
+      need_select: '選択してください'
