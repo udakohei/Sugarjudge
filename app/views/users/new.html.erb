@@ -3,20 +3,20 @@
   <%= form_with model: @user, local: true do |f| %>
     <%= render 'shared/error_messages', object: f.object %>
     <div class="mb-3">
-      <%= f.label :name %>
+      <%= f.label :name, class: 'form-label' %>
       <%= f.text_field :name, class: 'form-control' %>
     </div>
     <div class="mb-3">
-      <%= f.label :gender %>
-      <%= f.select :gender, User.genders_i18n.invert, {}, class: 'form-control'%>
+      <%= f.label :gender, class: 'form-label' %>
+      <%= f.select :gender, User.genders_i18n.invert, {}, class: 'form-select'%>
     </div>
     <div class="mb-3">
-      <%= f.label :age %>
+      <%= f.label :age, class: 'form-label' %>
       <%= f.number_field :age, class: 'form-control' %>
     </div>
     <div class="mb-3">
-      <%= f.label :physical_activity_level %>
-      <%= f.select :physical_activity_level, User.physical_activity_levels_i18n.invert, {}, class: 'form-control'%>
+      <%= f.label :physical_activity_level, class: 'form-label' %>
+      <%= f.select :physical_activity_level, User.physical_activity_levels_i18n.invert, {}, class: 'form-select'%>
     </div>
     <div class="mb-3">
       <%= f.submit nil, class: 'btn btn-primary' %>
