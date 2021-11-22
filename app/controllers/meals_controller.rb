@@ -3,7 +3,7 @@ class MealsController < ApplicationController
   require "google/cloud/translate/v2"
 
   def show
-    @meal = current_user.meals.find(params[:id])
+    @meal = current_user.meals.includes(:foods).find(params[:id])
   end
   
   def new
