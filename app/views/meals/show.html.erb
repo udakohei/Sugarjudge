@@ -4,10 +4,10 @@
     <%= image_tag @meal.meal_image.url, class: 'img-fluid col-sm-6', size: '500x500' %>
     <div class="col-sm-6">
       <canvas id="myChart" width="200px" height="100px" data-labels="<%= @data_keys %>" data-data="<%= @data_values %>" ></canvas>
+      <h1 class="mt-3"><%= @meal.balance_of_payments %></h1>
+      <% @meal.foods.each do |food| %>
+        <%= food.name %>
+      <% end %>
     </div>
   </div>
-  <h1><%= @meal.balance_of_payments %></h1>
-  <% @meal.foods.each do |food| %>
-    <%= food.name %>
-  <% end %>
 </div>
