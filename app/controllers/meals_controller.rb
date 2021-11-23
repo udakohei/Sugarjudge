@@ -8,7 +8,7 @@ class MealsController < ApplicationController
       '必要カロリー量',
       '摂取カロリー量',
     ]
-    @data_values = [@meal.user.required_calorie, @meal.calorie_intake]
+    @data_values = [@meal.user.required_calorie.round, @meal.calorie_intake]
   end
   
   def new

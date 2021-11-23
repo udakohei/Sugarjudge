@@ -17,8 +17,17 @@ document.addEventListener('turbolinks:load', () => {
   let ctx = document.getElementById('myChart').getContext('2d');
   let options = {
     indexAxis: 'y',
-    legend: {
-      display: false
+    plugins: {
+      legend: {
+        display: false
+      },
+      title: {
+        display: true,
+        text: 'カロリー収支',
+        font: {
+          size: 20
+        }
+      }
     }
   };
   let myChart = new Chart(ctx, {
@@ -30,8 +39,10 @@ document.addEventListener('turbolinks:load', () => {
       backgroundColor: ['rgba(100, 100, 100, 1)', 'rgba(255, 100, 100, 1)']
     }]
   },
-  options: options
-  });
+  options: options,
+  },
+  
+  );
 })
 
 // Uncomment to copy all static images under ../images to the output folder and reference

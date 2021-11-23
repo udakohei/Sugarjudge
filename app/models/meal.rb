@@ -16,6 +16,6 @@ class Meal < ApplicationRecord
   end
 
   def balance_of_payments
-    calorie_intake - user.required_calorie
+    calorie_intake - user.required_calorie.round
   end
 end
