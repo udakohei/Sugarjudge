@@ -5,14 +5,10 @@ class MealsController < ApplicationController
   def show
     @meal = current_user.meals.includes(:foods).find(params[:id])
     @data_keys = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
+      '必要カロリー量',
+      '摂取カロリー量',
     ]
-    @data_values = [0, 10, 5, 2, 20, 30, 45]
+    @data_values = [@meal.user.required_calorie, @meal.calorie_intake]
   end
   
   def new

@@ -15,14 +15,22 @@ import Chart from 'chart.js/auto';
 
 document.addEventListener('turbolinks:load', () => {
   let ctx = document.getElementById('myChart').getContext('2d');
+  let options = {
+    indexAxis: 'y',
+    legend: {
+      display: false
+    }
+  };
   let myChart = new Chart(ctx, {
-  type: 'line',
+  type: 'bar',
   data: {
     labels: JSON.parse(ctx.canvas.dataset.labels),
     datasets: [{
       data: JSON.parse(ctx.canvas.dataset.data),
+      backgroundColor: ['rgba(100, 100, 100, 1)', 'rgba(255, 100, 100, 1)']
     }]
   },
+  options: options
   });
 })
 
