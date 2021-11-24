@@ -2,6 +2,10 @@ class MealsController < ApplicationController
   require "google/cloud/vision"
   require "google/cloud/translate/v2"
 
+  def index
+
+  end
+
   def show
     @meal = Meal.all.includes(:foods, :user).find(params[:id])
     @data_values = [@meal.user.required_calorie.round, @meal.calorie_intake]
