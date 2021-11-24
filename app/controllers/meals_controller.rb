@@ -3,11 +3,7 @@ class MealsController < ApplicationController
   require "google/cloud/translate/v2"
 
   def show
-    @meal = current_user.meals.includes(:foods).find(params[:id])
-    @data_keys = [
-      '必要カロリー量',
-      '摂取カロリー量',
-    ]
+    @meal = Meal.all.includes(:foods, :user).find(params[:id])
     @data_values = [@meal.user.required_calorie.round, @meal.calorie_intake]
   end
   
