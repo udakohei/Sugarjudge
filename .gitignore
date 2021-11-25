@@ -38,3 +38,5 @@ yarn-debug.log*
 /public/uploads
 
 /spiritual-vent-283504-5e0647f2a4d8.json
+
+/db/csv_data
