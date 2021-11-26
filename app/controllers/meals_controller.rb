@@ -32,8 +32,12 @@ class MealsController < ApplicationController
   end
 
   def edit
-    @meal = current_user.meals.find(params[:id])
-    @foods = Food.search_foods(@meal.pass_to_sql)
+    @meal = Meal.find(params[:id])
+    foods_from_foods = Food.search_foods(@meal.pass_to_sql)
+    foods_from_genres = Genre.search_genres(@meal.pass_to_sql).map { |genre| genre.foods }
+    searched_foods = foods_from_foods + foods_from_genres
+    @foods = searched_foods.flatten
+    binding.irb
   end
 
   def update
