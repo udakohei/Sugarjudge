@@ -62,4 +62,8 @@ class Meal < ApplicationRecord
       "『#{foods.order(calorie: :desc).first.name}と諸々』"
     end
   end
+
+  def pass_to_sql
+    analyzed_foods.split(',')
+  end
 end

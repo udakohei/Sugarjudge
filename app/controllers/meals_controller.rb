@@ -19,6 +19,8 @@ class MealsController < ApplicationController
     begin
         @meal = current_user.meals.build(meal_params)
       if @meal.save
+        sent_image = File.open(@meal.meal_image.file.file)
+        @meal.update!(analyzed_foods: image_analysis(sent_image))
         redirect_to edit_meal_path(@meal), success: t('.success')
       else
         flash.now[:danger] = t('.failure')
@@ -31,8 +33,7 @@ class MealsController < ApplicationController
 
   def edit
     @meal = current_user.meals.find(params[:id])
-    sent_image = File.open(@meal.meal_image.file.file)
-    @analyzed_foods = image_analysis(sent_image)
+    @meal.pass_to_sql
     @foods = Food.all
   end
 
@@ -58,8 +59,6 @@ class MealsController < ApplicationController
   end
 
   def image_analysis(meal_image)
-    # image_path = File.expand_path('../', __FILE__)+"/steak.jpeg"
-
     image_annotator = Google::Cloud::Vision.image_annotator
 
     translate = Google::Cloud::Translate::V2.new
@@ -74,10 +73,9 @@ class MealsController < ApplicationController
       res.label_annotations.each do |label|
         translation = translate.translate label.description.downcase, to: 'ja'
         results << translation.text
-        # puts label.description
       end
     end
     
-    p results
+    results.join(',')
   end
 end
