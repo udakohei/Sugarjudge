@@ -33,8 +33,7 @@ class MealsController < ApplicationController
 
   def edit
     @meal = current_user.meals.find(params[:id])
-    @meal.pass_to_sql
-    @foods = Food.all
+    @foods = Food.search_foods(@meal.pass_to_sql)
   end
 
   def update
