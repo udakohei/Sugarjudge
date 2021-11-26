@@ -3,7 +3,7 @@ class MealsController < ApplicationController
   require "google/cloud/translate/v2"
 
   def index
-    @meals = Meal.all.includes(:foods, :user).order(created_at: :desc)
+    @meals = Meal.with_result.includes(:foods, :user).order(created_at: :desc)
   end
 
   def show
@@ -44,7 +44,7 @@ class MealsController < ApplicationController
       food_ids.each do |food_id|
         @meal.used_foods.find_or_create_by!(food: Food.find(food_id))
       end
-      @meal.update!(balance_of_payments: @meal.balance_of_payments)
+      @meal.update!(balance_of_payments: @meal.balance_of_payments_value)
       redirect_to meal_path(@meal), success: t('.success')
     else
       redirect_to edit_meal_path(@meal), danger: t('.need_select')
