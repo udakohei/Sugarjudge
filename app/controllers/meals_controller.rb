@@ -3,7 +3,7 @@ class MealsController < ApplicationController
   require "google/cloud/translate/v2"
 
   def index
-    @meals = Meal.all.includes(:foods, :user).order(created_at: :desc)
+    @meals = Meal.with_result.includes(:foods, :user).order(created_at: :desc)
   end
 
   def show
@@ -19,6 +19,8 @@ class MealsController < ApplicationController
     begin
         @meal = current_user.meals.build(meal_params)
       if @meal.save
+        sent_image = File.open(@meal.meal_image.file.file)
+        @meal.update!(analyzed_foods: image_analysis(sent_image))
         redirect_to edit_meal_path(@meal), success: t('.success')
       else
         flash.now[:danger] = t('.failure')
@@ -31,9 +33,10 @@ class MealsController < ApplicationController
 
   def edit
     @meal = current_user.meals.find(params[:id])
-    sent_image = File.open(@meal.meal_image.file.file)
-    @analyzed_foods = image_analysis(sent_image)
-    @foods = Food.all
+    foods_from_foods = Food.search_foods(@meal.pass_to_sql)
+    foods_from_genres = Genre.search_genres(@meal.pass_to_sql).map { |genre| genre.foods }
+    searched_foods = foods_from_foods + foods_from_genres
+    @foods = searched_foods.flatten.uniq
   end
 
   def update
@@ -44,7 +47,7 @@ class MealsController < ApplicationController
       food_ids.each do |food_id|
         @meal.used_foods.find_or_create_by!(food: Food.find(food_id))
       end
-      @meal.update!(balance_of_payments: @meal.balance_of_payments)
+      @meal.update!(balance_of_payments: @meal.balance_of_payments_value)
       redirect_to meal_path(@meal), success: t('.success')
     else
       redirect_to edit_meal_path(@meal), danger: t('.need_select')
@@ -58,8 +61,6 @@ class MealsController < ApplicationController
   end
 
   def image_analysis(meal_image)
-    # image_path = File.expand_path('../', __FILE__)+"/steak.jpeg"
-
     image_annotator = Google::Cloud::Vision.image_annotator
 
     translate = Google::Cloud::Translate::V2.new
@@ -74,10 +75,9 @@ class MealsController < ApplicationController
       res.label_annotations.each do |label|
         translation = translate.translate label.description.downcase, to: 'ja'
         results << translation.text
-        # puts label.description
       end
     end
     
-    p results
+    results.join(',')
   end
 end

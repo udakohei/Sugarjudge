@@ -8,4 +8,11 @@ class Food < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :calorie, presence: true
   validates :role, presence: true
+
+  scope :search_foods, ->(analyzed_foods) { where('name LIKE ? OR name LIKE ? OR name LIKE ? OR name LIKE ? OR 
+    name LIKE ? OR name LIKE ? OR name LIKE ? OR name LIKE ? OR name LIKE ? OR name LIKE ?', 
+    
+    "%#{analyzed_foods[0]}%", "%#{analyzed_foods[1]}%", "%#{analyzed_foods[2]}%", "%#{analyzed_foods[3]}%",
+    "%#{analyzed_foods[4]}%", "%#{analyzed_foods[5]}%", "%#{analyzed_foods[6]}%", "%#{analyzed_foods[7]}%",
+    "%#{analyzed_foods[8]}%", "%#{analyzed_foods[9]}%") }
 end

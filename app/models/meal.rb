@@ -7,6 +7,8 @@ class Meal < ApplicationRecord
 
   validates :meal_image, presence: true
 
+  scope :with_result, -> { where.not(balance_of_payments: nil) }
+
   def calorie_intake
     sum = 0
     foods.each do |food|
@@ -15,7 +17,7 @@ class Meal < ApplicationRecord
     sum
   end
 
-  def balance_of_payments
+  def balance_of_payments_value
     calorie_intake - user.required_calorie.round
   end
 
@@ -61,5 +63,9 @@ class Meal < ApplicationRecord
     else
       "『#{foods.order(calorie: :desc).first.name}と諸々』"
     end
+  end
+
+  def pass_to_sql
+    analyzed_foods.split(',')
   end
 end
