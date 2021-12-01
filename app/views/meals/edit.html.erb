@@ -15,7 +15,7 @@
           <%= food.label do %>
             <tr>
               <td><%= food.object.name %></td>
-              <td><%= food.check_box %></td>
+              <td><%= food.check_box class: 'chk' %></td>
             </tr>
           <% end %>
         <% end %>
@@ -26,10 +26,6 @@
       <%= link_to 'このなかにない', '#', class: 'btn btn-danger col-sm-2' %>
     </div>
   <% end %>
-  <p>テスト</p>
-<script type="text/javascript">
-  $(document).ready(function() {
-    $("p").text("成功！！");
-  });
-</script>
 </div>
+
+<button type="submit" id="btn1">-----完了-----</button>
