@@ -1,5 +1,5 @@
 $(function(){
-  $(".js-checkbox-others").hide();
+  $(".js-checkbox-others, #js-abstract-checkbox").hide();
   
   function changeDisplay() {
     if ($(".chk:checked").length > 0) {
@@ -12,4 +12,9 @@ $(function(){
   changeDisplay();
 
   $("input[type='checkbox']").on('change', changeDisplay);
+
+  $("#js-abstract-button").on('click', function(){
+    $("#js-abstract-checkbox").show(),
+    $("#js-concrete-checkbox, #js-abstract-button").hide();
+  });
 });
