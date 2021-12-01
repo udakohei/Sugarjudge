@@ -2,10 +2,16 @@ $(function(){
   $(".js-checkbox-others, #js-abstract-checkbox").hide();
   
   function changeDisplay() {
-    if ($(".chk:checked").length > 0) {
-      $(".js-checkbox-others").show();
+    if ($(".js-concrete-chk:checked").length > 0) {
+      $("#js-concrete-checkbox .js-checkbox-others").show();
     } else {
-      $(".js-checkbox-others").hide();
+      $("#js-concrete-checkbox .js-checkbox-others").hide();
+    };
+
+    if ($(".js-abstract-chk:checked").length > 0) {
+      $("#js-abstract-checkbox .js-checkbox-others").show();
+    } else {
+      $("#js-abstract-checkbox .js-checkbox-others").hide();
     };
   };
 
