@@ -32,3 +32,4 @@ ja:
       role:
         concrete: '具体的'
         abstract: '抽象的'
+        others: 'その他'
