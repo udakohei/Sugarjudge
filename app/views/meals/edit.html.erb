@@ -16,7 +16,7 @@
             <%= food.label do %>
               <tr class="js-checkbox-<%= food.object.role %>">
                 <td><%= food.object.name %></td>
-                <td><%= food.check_box class: 'js-concrete-chk' %></td>
+                <td><%= food.check_box class: 'js-chk' %></td>
               </tr>
             <% end %>
           <% end %>
@@ -41,7 +41,7 @@
             <%= food.label do %>
               <tr class="js-checkbox-<%= food.object.role %>">
                 <td><%= food.object.name %></td>
-                <td><%= food.check_box class: 'js-abstract-chk' %></td>
+                <td><%= food.check_box class: 'js-chk' %></td>
               </tr>
             <% end %>
           <% end %>
