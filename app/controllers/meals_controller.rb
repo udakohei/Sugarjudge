@@ -35,7 +35,7 @@ class MealsController < ApplicationController
     @meal = current_user.meals.find(params[:id])
     foods_from_foods = Food.search_foods(@meal.pass_to_sql)
     foods_from_genres = Genre.search_genres(@meal.pass_to_sql).map { |genre| genre.foods }
-    searched_foods = foods_from_foods + foods_from_genres
+    searched_foods = foods_from_foods + foods_from_genres + Food.others
     @foods = searched_foods.flatten.uniq
   end
 
