@@ -11,7 +11,7 @@
         </tr>
       </thead>
       <tbody>
-        <%= f.collection_check_boxes :food_ids, @foods, :id, :name do |food| %>
+        <%= f.collection_check_boxes :food_ids, @concrete_foods, :id, :name do |food| %>
           <%= food.label do %>
             <tr class="js-checkbox-<%= food.object.role %>">
               <td><%= food.object.name %></td>
@@ -34,7 +34,7 @@
         </tr>
       </thead>
       <tbody>
-        <%= f.collection_check_boxes :food_ids, @foods, :id, :name do |food| %>
+        <%= f.collection_check_boxes :food_ids, @abstract_foods, :id, :name do |food| %>
           <%= food.label do %>
             <tr class="js-checkbox-<%= food.object.role %>">
               <td><%= food.object.name %></td>
