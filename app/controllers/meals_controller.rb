@@ -33,10 +33,13 @@ class MealsController < ApplicationController
 
   def edit
     @meal = current_user.meals.find(params[:id])
-    foods_from_foods = Food.search_foods(@meal.pass_to_sql)
+
+    foods_from_foods = Food.concrete.search_foods(@meal.pass_to_sql)
     foods_from_genres = Genre.search_genres(@meal.pass_to_sql).map { |genre| genre.foods }
     searched_foods = foods_from_foods + foods_from_genres + Food.others
-    @foods = searched_foods.flatten.uniq
+    @concrete_foods = searched_foods.flatten.uniq
+
+    @abstract_foods = Food.abstract + Food.others
   end
 
   def update
@@ -47,7 +50,7 @@ class MealsController < ApplicationController
       food_ids.each do |food_id|
         @meal.used_foods.find_or_create_by!(food: Food.find(food_id))
       end
-      @meal.update!(balance_of_payments: @meal.balance_of_payments_value)
+      @meal.update!(balance_of_payments: @meal.balance_of_payments_value, title: @meal.result_meal_title)
       redirect_to meal_path(@meal), success: t('.success')
     else
       redirect_to edit_meal_path(@meal), danger: t('.need_select')
