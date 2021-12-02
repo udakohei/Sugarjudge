@@ -11,9 +11,9 @@ class User < ApplicationRecord
 
   def required_calorie
     if male?
-      (7.16 - 0.0138 * age - 0.4235) * 238 * physical_activity_level_value / 3
+      ((7.16 - 0.0138 * age - 0.4235) * 238 * physical_activity_level_value / 3) * 0.9
     else
-      (6.19 - 0.0138 * age - 0.9708) * 238 * physical_activity_level_value / 3
+      ((6.19 - 0.0138 * age - 0.9708) * 238 * physical_activity_level_value / 3) * 0.9
     end
   end
 
