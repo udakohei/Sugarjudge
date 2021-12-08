@@ -49,6 +49,6 @@ test:
 #
 production:
   <<: *default
-  database: easy_sugar_management_production
-  username: easy_sugar_management
-  password: <%= ENV['EASY_sugar_MANAGEMENT_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  encoding: unicode
+  pool: 5

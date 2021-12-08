@@ -226,6 +226,7 @@ GEM
     parallel (1.21.0)
     parser (3.0.2.0)
       ast (~> 2.4.1)
+    pg (1.2.3)
     public_suffix (4.0.6)
     puma (4.3.10)
       nio4r (~> 2.0)
@@ -372,6 +373,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (~> 3.2)
   mysql2 (>= 0.4.4)
+  pg
   puma (~> 4.1)
   rails (~> 6.0.4, >= 6.0.4.1)
   rails-i18n (~> 6.0.0)
