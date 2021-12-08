@@ -55,8 +55,7 @@ ActiveRecord::Schema.define(version: 2021_12_02_081704) do
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.integer "gender", null: false
-    t.integer "age", null: false
-    t.integer "physical_activity_level", null: false
+    t.integer "limit_level", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

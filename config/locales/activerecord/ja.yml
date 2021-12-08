@@ -9,8 +9,7 @@ ja:
       user:
         name: '名前'
         gender: '性別'
-        age: '年齢'
-        physical_activity_level: '身体活動レベル'
+        limit_level: '制限レベル'
       meal:
         meal_image: '食事写真'
       genre:
@@ -24,7 +23,7 @@ ja:
       gender:
         male: '男性'
         female: '女性'
-      physical_activity_level:
+      limit_level:
         low: '低い'
         normal: '普通'
         high: '高い'
