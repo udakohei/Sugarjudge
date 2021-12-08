@@ -15,7 +15,7 @@ import "../stylesheets/application"
 
 
 
-require('../calorie_chart.js')
+require('../sugar_chart.js')
 require('../checkbox.js')
 
 

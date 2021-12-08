@@ -6,7 +6,7 @@ class Food < ApplicationRecord
   enum role: { concrete: 0, abstract: 1, others: 2 }
 
   validates :name, presence: true, uniqueness: true
-  validates :calorie, presence: true
+  validates :sugar, presence: true
   validates :role, presence: true
 
   scope :search_foods, ->(analyzed_foods) { where('name LIKE ? OR name LIKE ? OR name LIKE ? OR name LIKE ? OR 

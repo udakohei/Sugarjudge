@@ -10,7 +10,7 @@ document.addEventListener('turbolinks:load', () => {
       },
       title: {
         display: true,
-        text: 'カロリー収支',
+        text: '糖質収支',
         font: {
           size: 20
         }
@@ -20,7 +20,7 @@ document.addEventListener('turbolinks:load', () => {
   let myChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ['必要カロリー量', '摂取カロリー量'],
+    labels: ['必要糖質量', '摂取糖質量'],
     datasets: [{
       data: JSON.parse(ctx.canvas.dataset.data),
       backgroundColor: ['rgba(100, 100, 100, 1)', 'rgba(255, 100, 100, 1)']

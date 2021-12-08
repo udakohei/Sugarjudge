@@ -11,12 +11,8 @@
       <%= f.select :gender, User.genders_i18n.invert, {}, class: 'form-select'%>
     </div>
     <div class="mb-3">
-      <%= f.label :age, class: 'form-label' %>
-      <%= f.number_field :age, class: 'form-control' %>
-    </div>
-    <div class="mb-3">
-      <%= f.label :physical_activity_level, class: 'form-label' %>
-      <%= f.select :physical_activity_level, User.physical_activity_levels_i18n.invert, {}, class: 'form-select'%>
+      <%= f.label :limit_level, class: 'form-label' %>
+      <%= f.select :limit_level, User.limit_levels_i18n.invert, {}, class: 'form-select'%>
     </div>
     <div class="mb-3">
       <%= f.submit nil, class: 'btn btn-primary' %>
