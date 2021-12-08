@@ -9,16 +9,16 @@ class Meal < ApplicationRecord
 
   scope :with_result, -> { where.not(balance_of_payments: nil) }
 
-  def calorie_intake
+  def sugar_intake
     sum = 0
     foods.each do |food|
-      sum += food.calorie
+      sum += food.sugar
     end
     sum
   end
 
   def balance_of_payments_value
-    calorie_intake - user.required_calorie.round
+    sugar_intake - user.required_sugar.round
   end
 
   def red?
@@ -27,9 +27,9 @@ class Meal < ApplicationRecord
 
   def result
     if red?
-      "カロリー赤字です"
+      "糖質赤字です"
     else
-      "カロリー黒字です"
+      "糖質黒字です"
     end
   end
 
@@ -43,15 +43,15 @@ class Meal < ApplicationRecord
 
   def balance_of_payments_with_sign
     if red?
-      "+#{balance_of_payments} kcal"
+      "+#{balance_of_payments} g"
     else
-      "#{balance_of_payments} kcal"
+      "#{balance_of_payments} g"
     end
   end
 
   def result_message
     if red?
-      "赤字が増えすぎるとカロリー破産してしまいます。気をつけてください。"
+      "赤字が増えすぎると糖質破産してしまいます。気をつけてください。"
     else
       "安定した黒字は確実にあなたの資産となります。"
     end
@@ -61,7 +61,7 @@ class Meal < ApplicationRecord
     if foods.length == 1
       "『#{foods.first.name}』"
     else
-      "『#{foods.order(calorie: :desc).first.name}と諸々』"
+      "『#{foods.order(sugar: :desc).first.name}と諸々』"
     end
   end
 

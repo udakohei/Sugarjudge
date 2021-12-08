@@ -12,7 +12,7 @@ Genre.create!(name: 'ジャンル２')
 10.times do
   Food.create!(
     name: Faker::Food.unique.sushi,
-    calorie: Faker::Number.number(digits: 3),
+    sugar: Faker::Number.number(digits: 3),
     role: :concrete,
     genre: Genre.first
   )

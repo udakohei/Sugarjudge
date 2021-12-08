@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :age, presence: true, numericality: { greater_than_or_equal_to: 18, less_than_or_equal_to: 130 }
   validates :physical_activity_level, presence: true
 
-  def required_calorie
+  def required_sugar
     if male?
       ((7.16 - 0.0138 * age - 0.4235) * 238 * physical_activity_level_value / 3) * 0.9
     else

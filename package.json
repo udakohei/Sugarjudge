@@ -1,5 +1,5 @@
 {
-  "name": "easy_calorie_management",
+  "name": "easy_sugar_management",
   "private": true,
   "dependencies": {
     "@popperjs/core": "^2.10.2",

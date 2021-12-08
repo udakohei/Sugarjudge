@@ -17,7 +17,7 @@ ja:
         name: 'ジャンル名'
       food:
         name: '食品名'
-        calorie: 'カロリー'
+        sugar: '糖質'
         role: '役割'
   enums:
     user:
