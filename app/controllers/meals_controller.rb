@@ -64,15 +64,16 @@ class MealsController < ApplicationController
   end
 
   def image_analysis(meal_image)
-    if Rails.env.production?
-      gcp_credentials = JSON.parse(ENV.fetch('GOOGLE_APPLICATION_CREDENTIALS'))
-      image_annotator = Google::Cloud::Vision::ImageAnnotator.new(credentials: gcp_credentials)
-      translate = Google::Cloud::Translate::V2.new(credentials: gcp_credentials)
-    else
-      image_annotator = Google::Cloud::Vision.image_annotator
-      translate = Google::Cloud::Translate::V2.new
+    gcp_credentials = JSON.parse(ENV.fetch('GOOGLE_APPLICATION_CREDENTIALS')) if Rails.env.production?
+
+    image_annotator = Google::Cloud::Vision.image_annotator do |config|
+      config.credentials = gcp_credentials if Rails.env.production?
     end
-    
+
+    translate = Google::Cloud::Translate::V2.new do |config|
+      config.credentials = gcp_credentials if Rails.env.production?
+    end
+
     response = image_annotator.label_detection(
       image:   meal_image,
     )
