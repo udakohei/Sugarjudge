@@ -64,8 +64,12 @@ class MealsController < ApplicationController
   end
 
   def image_analysis(meal_image)
-    File.open("app/sample2.json", 'w') do |file|
-      JSON.dump(Rails.application.credentials.google, file)
+    File.open("app/google-credentials.json", 'w') do |file|
+      if Rails.env.production?
+        JSON.dump(Rails.application.credentials.production_google, file)
+      else
+        JSON.dump(Rails.application.credentials.development_google, file)
+      end
     end
 
     # if Rails.env.production?
@@ -73,7 +77,7 @@ class MealsController < ApplicationController
     #   ENV["GOOGLE_APPLICATION_CREDENTIALS"] = gcp_credentials
     # end
 
-    ENV["GOOGLE_APPLICATION_CREDENTIALS"] = "app/sample2.json"
+    ENV["GOOGLE_APPLICATION_CREDENTIALS"] = "app/google-credentials.json"
     # image_annotator = Google::Cloud::Vision.image_annotator do |config|
     #   config.credentials = gcp_credentials if Rails.env.production?
     # end
@@ -98,8 +102,8 @@ class MealsController < ApplicationController
       end
     end
     
-    results.join(',')
+    File.delete("app/google-credentials.json")
 
-    File.delete("app/sample2.json")
+    results.join(',')
   end
 end
