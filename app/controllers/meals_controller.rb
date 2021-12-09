@@ -19,7 +19,6 @@ class MealsController < ApplicationController
     begin
         @meal = current_user.meals.build(meal_params)
       if @meal.save
-        # sent_image = File.open(@meal.meal_image.file.file)
         sent_image = File.open(meal_params["meal_image"].tempfile)
         @meal.update!(analyzed_foods: image_analysis(sent_image))
         redirect_to edit_meal_path(@meal), success: t('.success')
