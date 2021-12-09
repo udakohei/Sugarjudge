@@ -59,6 +59,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'activerecord-import'
 gem 'carrierwave'
 gem 'enum_help'
+gem 'fog-aws'
 gem 'google-api-client'
 gem 'google-cloud-vision'
 gem 'google-cloud-translate'
