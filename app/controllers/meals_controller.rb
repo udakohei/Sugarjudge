@@ -19,7 +19,7 @@ class MealsController < ApplicationController
     begin
         @meal = current_user.meals.build(meal_params)
       if @meal.save
-        sent_image = File.open(@meal.meal_image.file.file)
+        sent_image = File.open(meal_params["meal_image"].tempfile)
         @meal.update!(analyzed_foods: image_analysis(sent_image))
         redirect_to edit_meal_path(@meal), success: t('.success')
       else
@@ -64,9 +64,19 @@ class MealsController < ApplicationController
   end
 
   def image_analysis(meal_image)
-    image_annotator = Google::Cloud::Vision.image_annotator
+    File.open("app/google-credentials.json", 'w') do |file|
+      if Rails.env.production?
+        JSON.dump(Rails.application.credentials.production_google, file)
+      else
+        JSON.dump(Rails.application.credentials.development_google, file)
+      end
+    end
 
+    ENV["GOOGLE_APPLICATION_CREDENTIALS"] = "app/google-credentials.json"
+  
+    image_annotator = Google::Cloud::Vision.image_annotator
     translate = Google::Cloud::Translate::V2.new
+
 
     response = image_annotator.label_detection(
       image:   meal_image,
@@ -81,6 +91,8 @@ class MealsController < ApplicationController
       end
     end
     
+    File.delete("app/google-credentials.json")
+
     results.join(',')
   end
 end
