@@ -64,7 +64,7 @@ class MealsController < ApplicationController
   end
 
   def image_analysis(meal_image)
-    gcp_credentials = JSON.parse(ENV.fetch('GOOGLE_APPLICATION_CREDENTIALS')) if Rails.env.production?
+    gcp_credentials = JSON.parse(Rails.application.credentials.google.to_json) if Rails.env.production?
 
     image_annotator = Google::Cloud::Vision.image_annotator do |config|
       config.credentials = gcp_credentials if Rails.env.production?
