@@ -72,19 +72,8 @@ class MealsController < ApplicationController
       end
     end
 
-    # if Rails.env.production?
-    #   gcp_credentials = Rails.application.credentials.google.to_json
-    #   ENV["GOOGLE_APPLICATION_CREDENTIALS"] = gcp_credentials
-    # end
-
     ENV["GOOGLE_APPLICATION_CREDENTIALS"] = "app/google-credentials.json"
-    # image_annotator = Google::Cloud::Vision.image_annotator do |config|
-    #   config.credentials = gcp_credentials if Rails.env.production?
-    # end
-
-    # translate = Google::Cloud::Translate::V2.new do |config|
-    #   config.credentials = gcp_credentials if Rails.env.production?
-    # end
+  
     image_annotator = Google::Cloud::Vision.image_annotator
     translate = Google::Cloud::Translate::V2.new
 
