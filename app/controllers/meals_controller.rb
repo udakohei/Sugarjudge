@@ -8,7 +8,7 @@ class MealsController < ApplicationController
 
   def show
     @meal = Meal.all.includes(:foods, :user).find(params[:id])
-    @data_values = [@meal.user.required_sugar.round, @meal.sugar_intake]
+    @data_values = [@meal.user.sugar_limit.round, @meal.sugar_intake]
   end
   
   def new
@@ -51,6 +51,7 @@ class MealsController < ApplicationController
         @meal.used_foods.find_or_create_by!(food: Food.find(food_id))
       end
       @meal.update!(balance_of_payments: @meal.balance_of_payments_value, title: @meal.result_meal_title)
+      @meal.update!(body: @meal.result_message)
       redirect_to meal_path(@meal), success: t('.success')
     else
       redirect_to edit_meal_path(@meal), danger: t('.need_select')

@@ -1,20 +1,18 @@
-<div class="container">
-  <h1 class="mt-5 text-center">判定結果</h1>
-  <h1 class="mt-3 display-3 text-center <%= @meal.result_color %>"><%= @meal.result %></h1>
+<div class="container <%= @meal.result_color %>">
+  <h1 class="mt-5 text-center text-dark">判定結果</h1>
+  <h1 class="mt-3 display-3 text-center"><%= @meal.result %></h1>
   <div class="row mt-5">
     <div class="col-sm-6">
-      <h2 class="text-center <%= @meal.result_color %>"><%= @meal.title %></h2>
+      <h2 class="text-center"><%= @meal.title %></h2>
       <%= image_tag @meal.meal_image.url, class: 'img-fluid'%>
       <h4 class="text-center"><%= @meal.user.name %>さんの食事</h4>
-      <h4 class="text-center">食品→<% @meal.foods.each do |food| %>
-          ・<%= food.name %>
-      <% end %></h4>
+      <h4 class="text-center">食品：<%= @meal.used_foods_list %></h4>
     </div>
     <div class="col-sm-6">
-      <h1 class="<%= @meal.result_color %> text-center display-3"><%= @meal.balance_of_payments_with_sign %></h1>
+      <h1 class="text-center display-3"><%= @meal.balance_of_payments_with_sign %></h1>
       <canvas id="myChart" data-data="<%= @data_values %>" ></canvas>
       <div class="mt-3">
-        <h4><%= @meal.result_message %></h4>
+        <h4><%= @meal.body %></h4>
       </div>
     </div>
   </div>

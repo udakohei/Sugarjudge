@@ -18,7 +18,7 @@ class Meal < ApplicationRecord
   end
 
   def balance_of_payments_value
-    sugar_intake - user.required_sugar.round
+    sugar_intake - user.sugar_limit.round
   end
 
   def red?
@@ -51,9 +51,11 @@ class Meal < ApplicationRecord
 
   def result_message
     if red?
-      "赤字が増えすぎると糖質破産してしまいます。気をつけてください。"
+      "残念です。。。あなたの食事は糖質赤字です。赤字が増えすぎるとあなたの身体の資産は減り続け、糖質破産をしてしまいます。一刻も早く収支を黒字化させてください。ちなみに#{highest_sugar_food.name}を#{highest_sugar_food.genre.lowest_sugar_food.name}に変えると
+        #{highest_sugar_food.sugar - highest_sugar_food.genre.lowest_sugar_food.sugar}g黒字化されます。"
     else
-      "安定した黒字は確実にあなたの資産となります。"
+      "おめでとうございます！！あなたの食事は糖質黒字です。安定した黒字は確実に富としてあなたの資産となります。このまま継続させましょう。ちなみに#{highest_sugar_food.name}を#{highest_sugar_food.genre.lowest_sugar_food.name}に変えると
+      #{highest_sugar_food.sugar - highest_sugar_food.genre.lowest_sugar_food.sugar}g黒字化されます。"
     end
   end
 
@@ -67,5 +69,13 @@ class Meal < ApplicationRecord
 
   def pass_to_sql
     analyzed_foods.split(',')
+  end
+
+  def highest_sugar_food
+    foods.order(sugar: :desc).first
+  end
+
+  def used_foods_list
+    foods.map{ |food| food.name }.join('と')
   end
 end

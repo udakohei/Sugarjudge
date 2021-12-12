@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :gender, presence: true
   validates :limit_level, presence: true
 
-  def required_sugar
+  def sugar_limit
     if male?
       (20 * limit_level_value + 40) / 3
     else
