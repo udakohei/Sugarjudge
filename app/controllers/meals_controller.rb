@@ -50,7 +50,8 @@ class MealsController < ApplicationController
       food_ids.each do |food_id|
         @meal.used_foods.find_or_create_by!(food: Food.find(food_id))
       end
-      @meal.update!(balance_of_payments: @meal.balance_of_payments_value, title: @meal.result_meal_title, body: @meal.result_message)
+      @meal.update!(balance_of_payments: @meal.balance_of_payments_value, title: @meal.result_meal_title)
+      @meal.update!(body: @meal.result_message)
       redirect_to meal_path(@meal), success: t('.success')
     else
       redirect_to edit_meal_path(@meal), danger: t('.need_select')
