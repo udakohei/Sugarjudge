@@ -6,9 +6,7 @@
       <h2 class="text-center"><%= @meal.title %></h2>
       <%= image_tag @meal.meal_image.url, class: 'img-fluid'%>
       <h4 class="text-center"><%= @meal.user.name %>さんの食事</h4>
-      <h4 class="text-center">食品→<% @meal.foods.each do |food| %>
-          ・<%= food.name %>
-      <% end %></h4>
+      <h4 class="text-center">食品：<%= @meal.used_foods_list %></h4>
     </div>
     <div class="col-sm-6">
       <h1 class="text-center display-3"><%= @meal.balance_of_payments_with_sign %></h1>

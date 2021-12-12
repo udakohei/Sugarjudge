@@ -74,4 +74,8 @@ class Meal < ApplicationRecord
   def highest_sugar_food
     foods.order(sugar: :desc).first
   end
+
+  def used_foods_list
+    foods.map{ |food| food.name }.join('と')
+  end
 end
