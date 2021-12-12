@@ -20,7 +20,7 @@ document.addEventListener('turbolinks:load', () => {
   let myChart = new Chart(ctx, {
   type: 'bar',
   data: {
-    labels: ['必要糖質量', '摂取糖質量'],
+    labels: ['上限糖質量', '摂取糖質量'],
     datasets: [{
       data: JSON.parse(ctx.canvas.dataset.data),
       backgroundColor: ['rgba(100, 100, 100, 1)', 'rgba(255, 100, 100, 1)']
