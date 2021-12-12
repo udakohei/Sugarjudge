@@ -18,7 +18,7 @@ class Meal < ApplicationRecord
   end
 
   def balance_of_payments_value
-    sugar_intake - user.required_sugar.round
+    sugar_intake - user.sugar_limit.round
   end
 
   def red?

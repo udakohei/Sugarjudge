@@ -8,7 +8,7 @@ class MealsController < ApplicationController
 
   def show
     @meal = Meal.all.includes(:foods, :user).find(params[:id])
-    @data_values = [@meal.user.required_sugar.round, @meal.sugar_intake]
+    @data_values = [@meal.user.sugar_limit.round, @meal.sugar_intake]
   end
   
   def new
