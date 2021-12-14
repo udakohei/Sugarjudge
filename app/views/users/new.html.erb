@@ -14,6 +14,13 @@
       <%= f.label :limit_level, class: 'form-label' %>
       <%= f.select :limit_level, User.limit_levels_i18n.invert, {}, class: 'form-select'%>
     </div>
+    <div>
+      <ul class="limit-level-description">
+        <li>低い：体重を維持したい</li>
+        <li>普通：緩やかにダイエットしたい</li>
+        <li>高い：一気に痩せたい</li>
+      </ul>
+    </div>
     <div class="mb-3">
       <%= f.submit nil, class: 'btn btn-dark' %>
     </div>
