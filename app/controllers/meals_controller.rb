@@ -3,7 +3,7 @@ class MealsController < ApplicationController
   require "google/cloud/translate/v2"
 
   def index
-    @meals = Meal.with_result.includes(:foods, :user).order(created_at: :desc).page(params[:page])
+    @meals = Meal.with_result.includes(:foods, :user).order(created_at: :desc).page(params[:page]).per(24)
   end
 
   def show
