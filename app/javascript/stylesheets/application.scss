@@ -14,3 +14,16 @@ body {
 .card-title {
   text-decoration: none;
 }
+
+.page-link {
+  background-color: black;
+  color: white;
+}
+
+.page-item.active {
+  
+  .page-link {
+  background-color: red;
+  }
+
+}
