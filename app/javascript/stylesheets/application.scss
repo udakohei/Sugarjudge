@@ -11,6 +11,22 @@ body {
   flex: 1;
 }
 
+header {
+  background-color: black;
+  .navbar-brand{
+    color: white;
+  }
+
+  .nav-link{
+    color: white;
+  }
+}
+
+footer {
+  background-color: red;
+  color: white;
+}
+
 .card-title {
   text-decoration: none;
 }
@@ -36,4 +52,22 @@ body {
     margin-top: 10px;
   }
   
+}
+
+.red{
+  color: red;
+}
+
+.alert-success{
+  background-color: black;
+  color: white;
+  border: 0px;
+  border-radius: 0%;
+}
+
+.alert-danger {
+  background-color: red;
+  color: white;
+  border: 0px;
+  border-radius: 0%;
 }
