@@ -1,21 +1,23 @@
 <div class="container">
-  <h1 class="display-4 mt-3">この食事は黒字？赤字？</h1>
-  <h1 class="display-6">面倒くさがり屋のための糖質収支アプリ</h1>
+  <div class="title">
+    <h1 class="display-4 mt-3">この食事は黒字か？<span class="red">赤字か？</span></h1>
+    <h1 class="display-6">面倒くさがり屋のための<span class="red">糖質収支ジャッジ</span></h1>
+  </div>
   <div class="row mt-3">
     <div class="col-sm-7 align-self-center">
-      <%= image_tag 'top_image', class: 'img-fluid' %>
+      <%= image_tag 'Justice-amico', class: 'img-fluid' %>
     </div>
     <div class="col-sm-5 align-self-center">
       <ul class="top-list">
         <li>３つの質問で簡単なプロフィールを入力</li>
         <li>食事の写真を撮る</li>
         <li>料理名を選択肢から選ぶ</li>
-        <li>以上から1食の糖質収支を黒字か赤字かジャッジ！</li>
-        <li>アプリ内に自動で投稿され、みんなに見てもらう</li>
+        <li>以上から1食の糖質収支を黒字か<span class="red">赤字か</span>ジャッジ！</li>
+        <li>アプリ内に<span class="red">自動で</span>投稿され、みんなに見てもらう</li>
       </ul>
     </div>
   </div>
   <div class="row justify-content-end mt-5">
-    <%= link_to 'さっそくジャッジ！', new_user_path, class: 'btn btn-lg btn-primary col-sm-6', role: 'button' %>
+    <%= link_to 'さっそくジャッジ！', new_user_path, class: 'btn btn-lg btn-dark col-sm-6', role: 'button' %>
   </div>
 </div>
