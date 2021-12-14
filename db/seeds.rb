@@ -6,14 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Genre.create!(name: 'ジャンル１')
-Genre.create!(name: 'ジャンル２')
-
-10.times do
-  Food.create!(
-    name: Faker::Food.unique.sushi,
-    sugar: Faker::Number.number(digits: 3),
-    role: :concrete,
-    genre: Genre.first
+100.times do
+  Meal.create!(
+    balance_of_payments: Faker::Number.number(digits: 3),
+    user: User.first,
+    title: "テストデータ",
+    meal_image: File.open("app/assets/images/top_image.png")
   )
 end

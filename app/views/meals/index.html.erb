@@ -1,6 +1,8 @@
 <div class="container">
   <h1 class="mt-3">判定結果一覧</h1>
-  <div class="row">
+  <div class="row mb-3">
     <%= render @meals %>
   </div>
+  <%= paginate @meals, theme: 'bootstrap-5', pagination_class: "pagination-sm flex-wrap justify-content-center",
+                   nav_class: "d-inline-block" %>
 </div>
