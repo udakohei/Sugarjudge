@@ -25,6 +25,10 @@ header {
 footer {
   background-color: red;
   color: white;
+
+  li {
+    list-style-type: none;
+  }
 }
 
 .card-title {
@@ -78,4 +82,8 @@ footer {
     font-size: 17px;
     margin-top: 10px;
   }
+}
+
+.copyright {
+  opacity: 0.5;
 }
