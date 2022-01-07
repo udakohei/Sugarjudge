@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', function(){
   $("#js-abstract-checkbox").hide();
   
   $("#js-abstract-button").on('click', function(){

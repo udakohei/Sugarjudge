@@ -47,15 +47,19 @@ class MealsController < ApplicationController
     food_ids = params[:meal][:food_ids]
     food_ids.shift
     if food_ids.present?
-      food_ids.each do |food_id|
-        @meal.used_foods.find_or_create_by!(food: Food.find(food_id))
-      end
+      @meal.food_ids = food_ids
       @meal.update!(balance_of_payments: @meal.balance_of_payments_value, title: @meal.result_meal_title)
       @meal.update!(body: @meal.result_message)
       redirect_to meal_path(@meal), success: t('.success')
     else
       redirect_to edit_meal_path(@meal), danger: t('.need_select')
     end
+  end
+
+  def destroy
+    @meal = current_user.meals.find(params[:id])
+    @meal.destroy!
+    redirect_to meals_path, success: '削除しました'
   end
 
   private
