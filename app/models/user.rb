@@ -29,4 +29,8 @@ class User < ApplicationRecord
       1
     end
   end
+
+  def own?(object)
+    id == object.user_id
+  end
 end
