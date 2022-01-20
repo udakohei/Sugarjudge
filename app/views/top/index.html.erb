@@ -18,6 +18,10 @@
     </div>
   </div>
   <div class="row justify-content-end mt-5">
-    <%= link_to 'さっそくジャッジ！', new_user_path, class: 'btn btn-lg btn-dark col-sm-6', role: 'button' %>
+    <% if current_user %>
+      <%= link_to 'さっそくジャッジ！', edit_user_path(current_user), class: 'btn btn-lg btn-dark col-sm-6', role: 'button' %>
+    <% else %>
+      <%= link_to 'さっそくジャッジ！', new_user_path, class: 'btn btn-lg btn-dark col-sm-6', role: 'button' %>
+    <% end %>
   </div>
 </div>
