@@ -52,10 +52,10 @@ class Meal < ApplicationRecord
   def result_message
     if red?
       "残念です・・・あなたの食事は糖質赤字です。赤字が増えすぎるとあなたの身体の資産は減り続け、糖質破産をしてしまいます。一刻も早く収支を黒字化させてください。ちなみに#{highest_sugar_food.name}を#{highest_sugar_food.genre.lowest_sugar_food.name}に変えると
-        #{highest_sugar_food.sugar - highest_sugar_food.genre.lowest_sugar_food.sugar}g黒字化されます。"
+        #{highest_sugar_food.sugar - highest_sugar_food.genre.lowest_sugar_food.sugar}g黒字化されます。#{eliminate_red}"
     else
       "おめでとうございます！！あなたの食事は糖質黒字です。安定した黒字は確実に富としてあなたの資産となります。このまま継続させましょう。ちなみに#{highest_sugar_food.name}を#{highest_sugar_food.genre.lowest_sugar_food.name}に変えると
-      #{highest_sugar_food.sugar - highest_sugar_food.genre.lowest_sugar_food.sugar}g黒字化されます。"
+      #{highest_sugar_food.sugar - highest_sugar_food.genre.lowest_sugar_food.sugar}g黒字化されます。#{eliminate_red}"
     end
   end
 
@@ -77,5 +77,21 @@ class Meal < ApplicationRecord
 
   def used_foods_list
     foods.map{ |food| food.name }.join('と')
+  end
+
+  def eliminate_red
+    if balance_of_payments > 0 && balance_of_payments <= 15
+      "また、歌うことができるくらいの強度で運動すれば赤字が帳消しされます。ヨガやウォーキングをしましょう。"
+    elsif balance_of_payments > 15 && balance_of_payments <= 35
+      "また、会話はできるが歌うのは難しいくらいの強度で運動すれば赤字が帳消しされます。長めのジョギングをしましょう。"
+    elsif balance_of_payments > 35 && balance_of_payments <= 45
+      "また、短い時間、会話できないくらい運動すれば赤字が帳消しされます。ダッシュなど短距離走をしましょう。"
+    elsif balance_of_payments > 45 && balance_of_payments <= 75
+      "また、長時間、会話できないくらい運動すれば赤字が帳消しされます。マラソンなど長距離走をしましょう。"
+    elsif balance_of_payments > 75
+      "破産するしか道はなさそうです。"
+    else
+      "食事以外であなたは自由です！好きなことをしてください！"
+    end
   end
 end
