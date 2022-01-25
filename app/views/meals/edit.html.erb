@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="mt-3">食品選択</h1>
+  <h1 class="mt-3"><%= title '食品選択' %></h1>
   <%= image_tag @meal.meal_image.url, class: 'img-fluid d-block mx-auto', size: '500x500' %>
   <div id="js-concrete-checkbox">
     <%= form_with model: @meal, local: true, class: 'mt-3' do |f| %>
