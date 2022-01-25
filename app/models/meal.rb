@@ -94,4 +94,12 @@ class Meal < ApplicationRecord
       "食事以外であなたは自由です！好きなことをしてください！"
     end
   end
+
+  def shared_message
+    if red?
+      "食事の糖質収支が#{balance_of_payments.abs}g赤字でした。糖質破産します。"
+    else
+      "食事の糖質収支が#{balance_of_payments.abs}g黒字でした。富として誇りにします。"
+    end
+  end
 end
