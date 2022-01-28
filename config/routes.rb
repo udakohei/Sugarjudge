@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'static_pages#top'
 
   get 'contact_us', to: 'static_pages#contact_us'
+  get 'privacy_policy', to: 'static_pages#privacy_policy'
 
   resources :users, only: %i[new create edit update]
   resources :meals
