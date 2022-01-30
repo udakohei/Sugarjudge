@@ -6,6 +6,7 @@ body {
   display: flex;
   flex-flow: column;
   min-height: 100vh;
+  background: linear-gradient(#FFC6D9, #FFE1C6); 
 }
 
 .container {
@@ -97,4 +98,8 @@ footer {
 .no-decoration-link {
   text-decoration: none;
   color: white;
+}
+
+.table {
+  border-color: black;
 }
