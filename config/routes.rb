@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'privacy_policy', to: 'static_pages#privacy_policy'
   get 'terms_of_use', to: 'static_pages#terms_of_use'
 
+  get '/sitemap', to: redirect("https://easy-sugar-management.s3.ap-northeast-1.amazonaws.com/sitemap.xml.gz")
+
   resources :users, only: %i[new create edit update]
   resources :meals
 end
