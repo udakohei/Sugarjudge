@@ -1,4 +1,7 @@
 class Meal < ApplicationRecord
+  require "google/cloud/vision"
+  require "google/cloud/translate/v2"
+  
   belongs_to :user
   has_many :used_foods, dependent: :destroy
   has_many :foods, through: :used_foods
@@ -101,5 +104,38 @@ class Meal < ApplicationRecord
     else
       "食事の糖質収支が#{balance_of_payments.abs}g黒字でした。富として誇りにします。"
     end
+  end
+
+  def image_analysis(meal_image)
+    File.open("app/google-credentials.json", 'w') do |file|
+      if Rails.env.production?
+        JSON.dump(Rails.application.credentials.production_google, file)
+      else
+        JSON.dump(Rails.application.credentials.development_google, file)
+      end
+    end
+
+    ENV["GOOGLE_APPLICATION_CREDENTIALS"] = "app/google-credentials.json"
+  
+    image_annotator = Google::Cloud::Vision.image_annotator
+    translate = Google::Cloud::Translate::V2.new
+
+
+    response = image_annotator.label_detection(
+      image:   meal_image,
+    )
+
+    results = []
+
+    response.responses.each do |res|
+      res.label_annotations.each do |label|
+        translation = translate.translate label.description.downcase, to: 'ja'
+        results << translation.text
+      end
+    end
+    
+    File.delete("app/google-credentials.json")
+
+    results.join(',')
   end
 end
