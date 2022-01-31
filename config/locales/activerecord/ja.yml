@@ -7,7 +7,7 @@ ja:
       food: '食品'
     attributes:
       user:
-        name: '名前'
+        name: 'ニックネーム'
         gender: '性別'
         limit_level: '制限レベル'
       meal:
