@@ -1,8 +1,4 @@
 class UsersController < ApplicationController
-  def new
-    @user = User.new
-  end
-
   def create
     @user = User.new(user_params)
     if @user.save
@@ -11,16 +7,6 @@ class UsersController < ApplicationController
     else
       flash.now[:danger] = t('.failure')
       render :new
-    end
-  end
-
-  def edit
-    if current_user && params[:id] == current_user.id.to_s
-      @user = current_user
-    elsif current_user && params[:id] != current_user.id.to_s
-      redirect_to edit_user_path(current_user)
-    else
-      redirect_to new_user_path, danger: t('.failure')
     end
   end
 

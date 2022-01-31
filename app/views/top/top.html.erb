@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="title">
+    <h1 class="display-4 mt-3 catch-copy">この食事は黒字か？<span class="red">赤字か？</span></h1>
+    <h1 class="display-6 catch-copy">面倒くさがり屋のための<span class="red">糖質収支ジャッジ</span></h1>
+  </div>
+  <div class="row mt-3">
+    <div class="col-sm-7 align-self-center">
+      <%= image_tag 'Justice-amico', class: 'img-fluid' %>
+    </div>
+    <div class="col-sm-5 align-self-center">
+      <%= image_tag 'logo', class: 'img-fluid' %>
+      <ul class="top-list mt-3">
+        <li>３つの質問で簡単なプロフィールを入力</li>
+        <li>食事の写真を撮る</li>
+        <li>料理名を選択肢から選ぶ</li>
+        <li>以上から1食の糖質収支(糖質を取りすぎかどうか)を黒字か<span class="red">赤字か</span>でジャッジ！</li>
+        <li>アプリ内に<span class="red">自動で</span>投稿され、みんなに見てもらう</li>
+      </ul>
+    </div>
+  </div>
+  <div class="user-form">
+    <h1>プロフィール入力</h1>
+    <%= form_with model: @user, local: true do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <div class="mb-3">
+        <%= f.label :name, class: 'form-label' %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :gender, class: 'form-label' %>
+        <%= f.select :gender, User.genders_i18n.invert, {}, class: 'form-select'%>
+      </div>
+      <div class="mb-3">
+        <%= f.label :limit_level, class: 'form-label' %>
+        <%= f.select :limit_level, User.limit_levels_i18n.invert, {}, class: 'form-select'%>
+      </div>
+      <div>
+        <ul class="limit-level-description">
+          <li>低い：体重を維持したい</li>
+          <li>普通：緩やかにダイエットしたい</li>
+          <li>高い：一気に痩せたい</li>
+        </ul>
+      </div>
+      <div class="row justify-content-end mt-5">
+        <%= f.submit 'さっそくジャッジ！', class: 'btn btn-lg btn-dark col-sm-6' %>
+      </div>
+    <% end %>
+  </div>
+</div>
