@@ -5,8 +5,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to new_meal_path, success: t('.success')
     else
-      flash.now[:danger] = t('.failure')
-      render :new
+      redirect_to root_path, danger: t('.failure')
     end
   end
 
@@ -15,8 +14,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to new_meal_path, success: t('.success')
     else
-      flash.now[:danger] = t('.failure')
-      render :new
+      redirect_to root_path, danger: t('.failure')
     end
   end
 
