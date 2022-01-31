@@ -28,7 +28,7 @@ body {
 }
 
 header {
-  background-color: black;
+  background-color: rgb(255, 0, 0);
   .navbar-brand{
     color: white;
   }
@@ -39,7 +39,7 @@ header {
 }
 
 footer {
-  background-color: red;
+  background-color: rgb(255, 0, 0);
   color: white;
 
   li {
@@ -79,14 +79,14 @@ footer {
 }
 
 .alert-success{
-  background-color: black;
+  background-color: rgba(0,0,0,0.6);
   color: white;
   border: 0px;
   border-radius: 0%;
 }
 
 .alert-danger {
-  background-color: red;
+  background-color: rgba(255,0,0,0.6);
   color: white;
   border: 0px;
   border-radius: 0%;
