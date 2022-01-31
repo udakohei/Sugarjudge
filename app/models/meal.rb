@@ -100,9 +100,9 @@ class Meal < ApplicationRecord
 
   def shared_message
     if red?
-      "食事の糖質収支が#{balance_of_payments.abs}g赤字でした。糖質破産します。"
+      "食事の糖質収支が#{balance_of_payments.abs}g赤字で糖質破産します。食べ過ぎました。申し訳ございません！！"
     else
-      "食事の糖質収支が#{balance_of_payments.abs}g黒字でした。富として誇りにします。"
+      "食事の糖質収支が#{balance_of_payments.abs}g黒字で富として誇りにします。私はまだまだいける！"
     end
   end
 
