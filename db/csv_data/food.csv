@@ -113,4 +113,5 @@ id,name,sugar,role,genre_id
 112,スープ料理の何か,12,abstract,12
 113,鍋料理の何か,20,abstract,12
 114,お菓子料理の何か,50,abstract,12
-115,食べ放題、飲み放題,999,abstract,12
+115,果物料理の何か,10,abstract,12
+116,食べ放題、飲み放題,999,abstract,12
