@@ -30,12 +30,7 @@ class MealsController < ApplicationController
 
   def edit
     @meal = current_user.meals.find(params[:id])
-
-    foods_from_foods = Food.concrete.search_foods(@meal.pass_to_sql)
-    foods_from_genres = Genre.search_genres(@meal.pass_to_sql).map { |genre| genre.foods }
-    searched_foods = foods_from_foods + foods_from_genres
-    @concrete_foods = searched_foods.flatten.uniq
-
+    @concrete_foods = Food.searched_foods(@meal)
     @abstract_foods = Food.abstract
   end
 
