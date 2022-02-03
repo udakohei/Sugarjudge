@@ -17,3 +17,9 @@ ja:
       need_select: '選択してください'
     destroy:
       success: '削除しました'
+  user_sessions:
+    create:
+      success: 'ログインしました'
+      failure: 'ログインできませんでした'
+    destroy:
+      success: 'ログアウトしました'
