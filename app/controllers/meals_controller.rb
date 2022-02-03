@@ -51,7 +51,7 @@ class MealsController < ApplicationController
   def destroy
     @meal = using_user.meals.find(params[:id])
     @meal.destroy!
-    redirect_to meals_path, success: '削除しました'
+    redirect_to meals_path, success: t('.success')
   end
 
   private

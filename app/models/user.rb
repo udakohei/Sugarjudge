@@ -12,7 +12,6 @@ class User < ApplicationRecord
   validates :role, presence: true
 
   validates :password, confirmation: true
-  validates :email, uniqueness: true
 
   def sugar_limit
     if male?
