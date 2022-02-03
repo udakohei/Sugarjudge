@@ -3,6 +3,18 @@
     <%= link_to 'Sugarjudge', root_path, class: 'navbar-brand' %>
     <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarNav">
       <ul class="navbar-nav">
+        <% if logged_in? %>
+          <li class="nav-item">
+            <%= link_to 'ログアウト', logout_path, method: :delete, data: {confirm: 'ログアウトしますか'}, class: 'nav-link' %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to '会員登録', new_user_path, class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
+            <%= link_to 'ログイン', login_path, class: 'nav-link' %>
+          </li>
+        <% end %>
         <li class="nav-item">
           <%= link_to '判定結果一覧', meals_path, class: 'nav-link' %>
         </li>

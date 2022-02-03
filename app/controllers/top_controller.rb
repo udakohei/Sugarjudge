@@ -1,9 +1,9 @@
 class TopController < ApplicationController
   def top
-    if current_user
-      @user = current_user
+    if using_user
+      @user = using_user
     else
-      @user = User.new
+      @user = User.guest.new
     end
   end
 end

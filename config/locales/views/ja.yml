@@ -3,6 +3,7 @@ ja:
     create:
       success: 'ユーザーを登録しました'
       failure: 'ユーザーを登録できませんでした'
+      not_authority: '権限がありません'
     update:
       success: 'ユーザーを編集しました'
       failure: 'ユーザーを編集できませんでした'
@@ -14,3 +15,11 @@ ja:
     update:
       success: '選択できました'
       need_select: '選択してください'
+    destroy:
+      success: '削除しました'
+  user_sessions:
+    create:
+      success: 'ログインしました'
+      failure: 'ログインできませんでした'
+    destroy:
+      success: 'ログアウトしました'

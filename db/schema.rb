@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_02_081704) do
+ActiveRecord::Schema.define(version: 2022_02_03_100726) do
 
   create_table "foods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -58,6 +58,11 @@ ActiveRecord::Schema.define(version: 2021_12_02_081704) do
     t.integer "limit_level", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
+    t.string "crypted_password"
+    t.string "salt"
+    t.integer "role", default: 0
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "foods", "genres"

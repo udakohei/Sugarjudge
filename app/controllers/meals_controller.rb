@@ -14,7 +14,7 @@ class MealsController < ApplicationController
 
   def create
     begin
-        @meal = current_user.meals.build(meal_params)
+        @meal = using_user.meals.build(meal_params)
       if @meal.save
         sent_image = File.open(meal_params["meal_image"].tempfile)
         @meal.update!(analyzed_foods: @meal.image_analysis(sent_image))
@@ -29,13 +29,13 @@ class MealsController < ApplicationController
   end
 
   def edit
-    @meal = current_user.meals.find(params[:id])
+    @meal = using_user.meals.find(params[:id])
     @concrete_foods = Food.searched_foods(@meal)
     @abstract_foods = Food.abstract
   end
 
   def update
-    @meal = current_user.meals.find(params[:id])
+    @meal = using_user.meals.find(params[:id])
     food_ids = params[:meal][:food_ids]
     food_ids.shift
     if food_ids.present?
@@ -49,9 +49,9 @@ class MealsController < ApplicationController
   end
 
   def destroy
-    @meal = current_user.meals.find(params[:id])
+    @meal = using_user.meals.find(params[:id])
     @meal.destroy!
-    redirect_to meals_path, success: '削除しました'
+    redirect_to meals_path, success: t('.success')
   end
 
   private
