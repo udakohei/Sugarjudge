@@ -1,12 +1,18 @@
 class User < ApplicationRecord
+  authenticates_with_sorcery!
   has_many :meals, dependent: :destroy
 
   enum gender: { male: 0, female: 1 }
   enum limit_level: { low: 0, normal: 1, high: 2 }
+  enum role: { guest: 0, login: 1, admin: 2 }
 
   validates :name, presence: true, length: { maximum: 255 }
   validates :gender, presence: true
   validates :limit_level, presence: true
+  validates :role, presence: true
+
+  validates :password, confirmation: true
+  validates :email, uniqueness: true
 
   def sugar_limit
     if male?
