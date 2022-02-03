@@ -3,6 +3,7 @@ ja:
     create:
       success: 'ユーザーを登録しました'
       failure: 'ユーザーを登録できませんでした'
+      not_authority: '権限がありません'
     update:
       success: 'ユーザーを編集しました'
       failure: 'ユーザーを編集できませんでした'

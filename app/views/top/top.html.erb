@@ -41,6 +41,7 @@
           <li>高い：一気に痩せたい</li>
         </ul>
       </div>
+      <%= f.hidden_field :role, :value => f.object.role_i18n.downcase %>
       <div class="row justify-content-end mt-5">
         <%= f.submit 'さっそくジャッジ！', class: 'btn btn-lg btn-dark col-sm-6' %>
       </div>

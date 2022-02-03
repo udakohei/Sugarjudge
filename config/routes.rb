@@ -8,6 +8,6 @@ Rails.application.routes.draw do
 
   get '/sitemap', to: redirect("https://easy-sugar-management.s3.ap-northeast-1.amazonaws.com/sitemap.xml.gz")
 
-  resources :users, only: %i[create update]
+  resources :users, only: %i[new create update]
   resources :meals
 end

@@ -3,7 +3,7 @@ class TopController < ApplicationController
     if guest_user
       @user = guest_user
     else
-      @user = User.new
+      @user = User.guest.new
     end
   end
 end

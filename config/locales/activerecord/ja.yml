@@ -10,6 +10,9 @@ ja:
         name: 'ニックネーム'
         gender: '性別'
         limit_level: '制限レベル'
+        email: 'メールアドレス'
+        password: 'パスワード'
+        password_confirmation: 'パスワード確認'
       meal:
         meal_image: '食事写真'
       genre:
