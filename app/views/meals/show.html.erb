@@ -5,7 +5,7 @@
     <div class="col-sm-6">
       <h2 class="text-center"><%= @meal.title %></h2>
       <%= image_tag @meal.meal_image.url, class: 'img-fluid'%>
-      <h4 class="text-center"><%= @meal.user.name %>さんの食事</h4>
+      <h4 class="text-center"><%= link_to "#{@meal.user.name}さん", user_path(@meal.user), class: "#{@meal.result_color}" %>の食事</h4>
       <h4 class="text-center">食品：<%= @meal.used_foods_list %></h4>
     </div>
     <div class="col-sm-6">

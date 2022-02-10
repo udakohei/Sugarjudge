@@ -5,6 +5,9 @@
       <ul class="navbar-nav">
         <% if logged_in? %>
           <li class="nav-item">
+            <%= link_to "#{current_user.name}さん", user_path(current_user), class: 'nav-link' %>
+          </li>
+          <li class="nav-item">
             <%= link_to 'ログアウト', logout_path, method: :delete, data: {confirm: 'ログアウトしますか'}, class: 'nav-link' %>
           </li>
         <% else %>

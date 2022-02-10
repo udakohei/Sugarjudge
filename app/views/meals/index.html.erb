@@ -1,7 +1,9 @@
 <div class="container">
   <h1 class="mt-3"><%= title '判定結果一覧' %></h1>
   <div class="row mb-3">
-    <%= render @meals %>
+    <%@meals.each do |meal| %>
+      <%= render 'meals/meal', meal: meal %>
+    <% end %>
   </div>
   <%= paginate @meals, theme: 'bootstrap-5', pagination_class: "pagination-sm flex-wrap justify-content-center",
                    nav_class: "d-inline-block" %>
