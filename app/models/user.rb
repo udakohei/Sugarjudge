@@ -60,4 +60,32 @@ class User < ApplicationRecord
   def sum_balance_of_payments
     sum_sugar - sum_limit
   end
+
+  def red?
+    sum_balance_of_payments > 0
+  end
+
+  def result_color
+    if red?
+      'text-danger'
+    else
+      'text-dark'
+    end
+  end
+
+  def result
+    if red?
+      "累計糖質赤字です"
+    else
+      "累計糖質黒字です"
+    end
+  end
+
+  def sum_balance_of_payments_with_sign
+    if red?
+      "+#{sum_balance_of_payments} g"
+    else
+      "#{sum_balance_of_payments} g"
+    end
+  end
 end
