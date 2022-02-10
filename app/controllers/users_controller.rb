@@ -3,6 +3,11 @@ class UsersController < ApplicationController
     @user = User.login.new
   end
 
+  def show
+    @user = User.find(params[:id])
+    @meals = @user.meals.with_result.includes(:foods).order(created_at: :desc).page(params[:page]).per(24)
+  end
+
   def create
     @user = User.new(user_params)
     if @user.guest?
