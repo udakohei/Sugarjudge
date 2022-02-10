@@ -34,6 +34,6 @@
       <%= f.password_field :password_confirmation, class: 'form-control'%>
     </div>
     <%= f.hidden_field :role, :value => f.object.role_i18n.downcase %>
-    <%= f.submit nil, class: 'btn btn-dark' %>
+    <%= f.submit '登録する', class: 'btn btn-dark' %>
   <% end %>
 </div>
