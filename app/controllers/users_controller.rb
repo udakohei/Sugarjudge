@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       end
     elsif @user.login?
       if @user.save
-        redirect_to new_meal_path, success: t('.success')
+        redirect_to login_path, success: t('.success')
       else
         flash.now[:danger] = t('.failure')
         render 'new'
