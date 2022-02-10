@@ -1,11 +1,11 @@
 <div class="col-sm-4">
     <div class="card text-center">
-      <%= link_to meal_path(meal), class:'card-title' do %>
-        <%= image_tag meal.meal_image.url, class: 'card-img-top', size: '200x300' %>
-        <div class="card-body <%= meal.result_color %>">
+      <%= image_tag meal.meal_image.url, class: 'card-img-top', size: '200x300' %>
+      <div class="card-body <%= meal.result_color %>">
+        <%= link_to meal_path(meal), class: 'card-title' do %>
           <h5 class="card-title <%= meal.result_color %>"><%= meal.title %></h5>
-      <% end %>
-        <p class="card-text"><%= link_to "#{meal.user.name}さん", user_path(meal.user), class: "#{meal.result_color}" %>の食事</p>
+        <% end %>
+        <p class="card-text"><%= meal.user.name %>さんの食事</p>
         <p class="card-text"><%= meal.balance_of_payments_with_sign %></p>
       </div>
     </div>
