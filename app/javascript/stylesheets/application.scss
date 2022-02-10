@@ -29,13 +29,6 @@ body {
 
 header {
   background-color: rgb(255, 0, 0);
-  .navbar-brand{
-    color: white;
-  }
-
-  .nav-link{
-    color: white;
-  }
 }
 
 footer {
@@ -140,4 +133,8 @@ footer {
 
 .user-meal {
   margin-bottom: 50px;
+}
+
+.navbar-toggler-icon {
+  color: white;
 }

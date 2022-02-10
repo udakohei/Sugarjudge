@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   def new
-    @user = User.login.new
+    if logged_in?
+      @user = using_user
+    else
+      @user = User.login.new
+    end
   end
 
   def show

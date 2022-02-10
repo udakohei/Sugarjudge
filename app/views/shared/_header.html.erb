@@ -1,23 +1,28 @@
-<header class="navbar navbar-expand-sm">
+<header class="navbar navbar-expand-sm navbar-dark">
   <div class="container-fluid">
     <%= link_to 'Sugarjudge', root_path, class: 'navbar-brand' %>
-    <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarNav">
-      <ul class="navbar-nav">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
         <% if logged_in? %>
-          <li class="nav-item">
-            <%= link_to "#{current_user.name}さん", user_path(current_user), class: 'nav-link' %>
-          </li>
           <li class="nav-item">
             <%= link_to 'ログアウト', logout_path, method: :delete, data: {confirm: 'ログアウトしますか'}, class: 'nav-link' %>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to '会員登録', new_user_path, class: 'nav-link' %>
-          </li>
-          <li class="nav-item">
             <%= link_to 'ログイン', login_path, class: 'nav-link' %>
           </li>
         <% end %>
+        <% if using_user %>
+          <li class="nav-item">
+            <%= link_to "#{using_user.name}さん", user_path(using_user), class: 'nav-link' %>
+          </li>
+        <% end %>
+        <li class="nav-item">
+          <%= link_to '会員登録', new_user_path, class: 'nav-link' %>
+        </li>
         <li class="nav-item">
           <%= link_to '判定結果一覧', meals_path, class: 'nav-link' %>
         </li>
