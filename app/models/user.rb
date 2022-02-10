@@ -44,4 +44,20 @@ class User < ApplicationRecord
   def own?(object)
     id == object.user_id
   end
+
+  def sum_sugar
+    sugar = 0
+    meals.with_result.each do |meal|
+      sugar += meal.sugar_intake
+    end
+    sugar
+  end
+
+  def sum_limit
+    meals.with_result.length * sugar_limit
+  end
+
+  def sum_balance_of_payments
+    sum_sugar - sum_limit
+  end
 end

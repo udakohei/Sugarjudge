@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @meals = @user.meals.with_result.includes(:foods).order(created_at: :desc).page(params[:page]).per(24)
+    @data_values = [@user.sum_limit, @user.sum_sugar]
   end
 
   def create

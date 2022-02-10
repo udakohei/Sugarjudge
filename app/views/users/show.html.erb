@@ -1,5 +1,6 @@
 <div class="container">
   <h1 class="mt-3"><%= title "#{@user.name}さん" %></h1>
+  <canvas id="myChart" data-data="<%= @data_values %>" ></canvas>
   <div class="row mb-3">
     <%= render @meals %>
   </div>
