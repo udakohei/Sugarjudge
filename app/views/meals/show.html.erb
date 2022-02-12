@@ -14,7 +14,7 @@
       <div class="mt-3">
         <h4><%= @meal.body %></h4>
       </div>
-      <% if using_user && using_user.own?(@meal) %>
+      <% if using_user&.own?(@meal) %>
         <div class="row justify-content-end mt-2">
           <%= link_to '編集する', edit_meal_path(@meal), class: 'btn btn-dark mt-5'%>
           <%= link_to '削除する', meal_path(@meal), method: :delete, data: {confirm: '食事を削除しますか'}, class: 'btn btn-danger mt-2'%>
@@ -23,6 +23,52 @@
           <% end %>
         </div>
       <% end %>
+    </div>
+  </div>
+  <div class="comment">
+    <h1>コメント</h1>
+    <% if using_user %>
+      <%= form_with model: @comment, url: [@meal, @comment], local: true do |f| %>
+        <div class="mb-3">
+          <%= f.text_field :body, class: 'form-control', placeholder: 'コメントを入力' %>
+        </div>
+        <%= f.submit '投稿', class: 'btn btn-dark' %>
+      <% end %>
+    <% end %>
+    <div class="comment-list">
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <div class="each-comment">
+            <div class="balloon">
+              <div class="name">
+                <p><%= comment.user.name %>さん</p>
+              </div>
+              <p><%= comment.body %></p>
+            </div>
+            <div>
+              <p><%= I18n.l(comment.created_at, format: :long) %></p>
+              <% if using_user&.own?(comment) %>
+                <%= link_to comment_path(comment), method: :delete, data: {confirm: 'コメントを削除しますか'}, class: 'trash-comment' do %>
+                  <i class="fas fa-trash-alt"></i>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+      <div class="each-comment">
+        <div class="balloon">
+          <div class="name">
+           <p>管理人</p>
+          </div>
+          <% if @meal.red? %>
+            <p>赤字残念です・・・</p>
+          <% else %>
+            <p>黒字おめでとうございます！</p>
+          <% end %>
+        </div>
+        <p><%= I18n.l(@meal.created_at, format: :long) %></p>
+      </div>
     </div>
   </div>
 </div>

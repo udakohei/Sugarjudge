@@ -5,6 +5,7 @@ ja:
       meal: '食事'
       genre: 'ジャンル'
       food: '食品'
+      comment: 'コメント'
     attributes:
       user:
         name: 'ニックネーム'
@@ -21,6 +22,8 @@ ja:
         name: '食品名'
         sugar: '糖質'
         role: '役割'
+      comment:
+        body: 'コメント'
   enums:
     user:
       gender:

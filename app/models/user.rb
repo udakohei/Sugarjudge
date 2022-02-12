@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
   has_many :meals, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   enum gender: { male: 0, female: 1 }
   enum limit_level: { low: 0, normal: 1, high: 2 }
