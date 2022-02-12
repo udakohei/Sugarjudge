@@ -19,7 +19,7 @@
       og: { title: 'Sugarjudge(糖質収支ジャッジアプリ)', description: 'この食事は黒字か？赤字か？面倒くさがり屋のための糖質収支ジャッジアプリ『Sugarjudge』
       糖質を黒字か赤字かでジャッジ！', 
       url: 'https://www.sugarjudge.com/',
-      image: if @meal && @meal.meal_image
+      image: if @meal&.meal_image
               @meal.meal_image
              else
               image_url('logo')
