@@ -29,3 +29,7 @@ ja:
       failure: 'コメントを投稿できませんでした'
     destroy:
       success: 'コメントを削除しました'
+  apologizes:
+    create:
+      success: '謝罪文を登録しました'
+      failure: '謝罪文を登録できませんでした'

@@ -16,6 +16,7 @@ ja:
         password_confirmation: 'パスワード確認'
       meal:
         meal_image: '食事写真'
+        apologize: '謝罪文'
       genre:
         name: 'ジャンル名'
       food:

@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   resources :users, only: %i[new create update show]
   resources :meals do
     resources :comments, only: %i[create destroy], shallow: true
+    resource :apologize, only: %i[create], shallow: true
   end
 end
