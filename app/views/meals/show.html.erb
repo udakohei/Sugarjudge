@@ -49,6 +49,19 @@
           </div>
         <% end %>
       <% end %>
+      <div class="each-comment">
+        <div class="balloon">
+          <div class="name">
+           <p>管理人</p>
+          </div>
+          <% if @meal.red? %>
+            <p>赤字残念です・・・</p>
+          <% else %>
+            <p>黒字おめでとうございます！</p>
+          <% end %>
+        </div>
+        <p><%= I18n.l(@meal.created_at, format: :long) %></p>
+      </div>
     </div>
   </div>
 </div>

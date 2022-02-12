@@ -7,7 +7,7 @@ class MealsController < ApplicationController
     @meal = Meal.find(params[:id])
     @data_values = [@meal.user.sugar_limit.round, @meal.sugar_intake]
     @comment = using_user.comments.new if using_user
-    @comments = @meal.comments
+    @comments = @meal.comments.order(created_at: :desc)
   end
   
   def new
