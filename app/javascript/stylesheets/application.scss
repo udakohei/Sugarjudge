@@ -138,3 +138,51 @@ footer {
 .navbar-toggler-icon {
   color: white;
 }
+
+.comment {
+  color:black;
+  margin-top: 70px;
+}
+
+.comment-list {
+  color:black;
+  margin-top: 20px;
+}
+
+
+.balloon{
+  position: relative;
+  padding: 20px;
+  border-radius: 10px;
+  color: #ffffff;
+  background-color: #0888ff;
+  margin-left: 110px;
+  margin-bottom: 20px;
+
+}
+
+.balloon .name{
+  position: absolute;
+  left: -110px;
+  top: 0;
+  color: black;
+  padding-top: 20px;
+}
+
+.balloon::before{
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  left: -15px;
+  top: 20px;
+  border-right: 15px solid #0888ff;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
+.each-comment {
+  border-bottom: solid;
+  padding-top: 20px;
+}

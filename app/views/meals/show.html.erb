@@ -25,20 +25,30 @@
       <% end %>
     </div>
   </div>
-  <div>
+  <div class="comment">
+    <h1>コメント</h1>
     <% if using_user %>
       <%= form_with model: @comment, url: [@meal, @comment], local: true do |f| %>
         <div class="mb-3">
-          <%= f.label :body, class: 'form-label' %>
           <%= f.text_field :body, class: 'form-control', placeholder: 'コメントを入力' %>
         </div>
         <%= f.submit '投稿', class: 'btn btn-dark' %>
       <% end %>
     <% end %>
-    <% if @comments %>
-      <% @comments.each do |comment| %>
-        <p><%= comment.body %></p>
+    <div class="comment-list">
+      <% if @comments %>
+        <% @comments.each do |comment| %>
+          <div class="each-comment">
+            <div class="balloon">
+              <div class="name">
+                <p><%= comment.user.name %>さん</p>
+              </div>
+              <p><%= comment.body %></p>
+            </div>
+            <p><%= I18n.l(comment.created_at, format: :long) %></p>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
