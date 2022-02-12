@@ -10,6 +10,7 @@ class Meal < ApplicationRecord
   mount_uploader :meal_image, MealImageUploader
 
   validates :meal_image, presence: true
+  validates :apologize, length: { minimum: 1, maximum: 255 }
 
   scope :with_result, -> { where.not(balance_of_payments: nil) }
 
