@@ -23,3 +23,7 @@ ja:
       failure: 'ログインできませんでした'
     destroy:
       success: 'ログアウトしました'
+  comments:
+    create:
+      success: 'コメントを投稿しました'
+      failure: 'コメントを投稿できませんでした'
