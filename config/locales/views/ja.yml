@@ -27,3 +27,5 @@ ja:
     create:
       success: 'コメントを投稿しました'
       failure: 'コメントを投稿できませんでした'
+    destroy:
+      success: 'コメントを削除しました'

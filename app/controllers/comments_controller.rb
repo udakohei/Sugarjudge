@@ -9,6 +9,13 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    comment = using_user.comments.find(params[:id])
+    meal = comment.meal
+    comment.destroy!
+    redirect_to meal_path(meal), success: t('.success')
+  end
+  
   private
 
   def comment_params
