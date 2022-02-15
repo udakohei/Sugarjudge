@@ -16,19 +16,19 @@ class User < ApplicationRecord
 
   with_options unless: :guest? do |user|
     user.validates :email, uniqueness: true, presence: true
-    user.validates :password, confirmation: true, presence: true, length: {minimum: 3}, if: -> { new_record? || changes[:crypted_password] }
+    user.validates :password, confirmation: true, presence: true, length: { minimum: 3 }, if: lambda {
+                                                                                                new_record? || changes[:crypted_password]
+                                                                                              }
     user.validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
   end
 
   def sugar_limit
     if male?
       (20 * limit_level_value + 40) / 3
+    elsif high?
+      50 / 3
     else
-      if high?
-        50 / 3
-      else
-        (5 * (limit_level_value - 1) + 50) / 3
-      end
+      (5 * (limit_level_value - 1) + 50) / 3
     end
   end
 
@@ -76,9 +76,9 @@ class User < ApplicationRecord
 
   def result
     if red?
-      "累計糖質赤字です"
+      '累計糖質赤字です'
     else
-      "累計糖質黒字です"
+      '累計糖質黒字です'
     end
   end
 

@@ -10,76 +10,81 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_12_125600) do
-
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.text "body"
-    t.bigint "user_id", null: false
-    t.bigint "meal_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["meal_id"], name: "index_comments_on_meal_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
+ActiveRecord::Schema.define(version: 20_220_212_125_600) do
+  create_table 'comments', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci',
+                           force: :cascade do |t|
+    t.text 'body'
+    t.bigint 'user_id', null: false
+    t.bigint 'meal_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['meal_id'], name: 'index_comments_on_meal_id'
+    t.index ['user_id'], name: 'index_comments_on_user_id'
   end
 
-  create_table "foods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "sugar", null: false
-    t.integer "role", null: false
-    t.bigint "genre_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["genre_id"], name: "index_foods_on_genre_id"
-    t.index ["name"], name: "index_foods_on_name", unique: true
+  create_table 'foods', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci',
+                        force: :cascade do |t|
+    t.string 'name', null: false
+    t.integer 'sugar', null: false
+    t.integer 'role', null: false
+    t.bigint 'genre_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['genre_id'], name: 'index_foods_on_genre_id'
+    t.index ['name'], name: 'index_foods_on_name', unique: true
   end
 
-  create_table "genres", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["name"], name: "index_genres_on_name", unique: true
+  create_table 'genres', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci',
+                         force: :cascade do |t|
+    t.string 'name', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['name'], name: 'index_genres_on_name', unique: true
   end
 
-  create_table "meals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "meal_image", null: false
-    t.integer "balance_of_payments"
-    t.text "body"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "analyzed_foods"
-    t.string "title"
-    t.string "apologize"
-    t.index ["user_id"], name: "index_meals_on_user_id"
+  create_table 'meals', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci',
+                        force: :cascade do |t|
+    t.string 'meal_image', null: false
+    t.integer 'balance_of_payments'
+    t.text 'body'
+    t.bigint 'user_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.string 'analyzed_foods'
+    t.string 'title'
+    t.string 'apologize'
+    t.index ['user_id'], name: 'index_meals_on_user_id'
   end
 
-  create_table "used_foods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "meal_id", null: false
-    t.bigint "food_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["food_id"], name: "index_used_foods_on_food_id"
-    t.index ["meal_id", "food_id"], name: "index_used_foods_on_meal_id_and_food_id", unique: true
-    t.index ["meal_id"], name: "index_used_foods_on_meal_id"
+  create_table 'used_foods', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci',
+                             force: :cascade do |t|
+    t.bigint 'meal_id', null: false
+    t.bigint 'food_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['food_id'], name: 'index_used_foods_on_food_id'
+    t.index %w[meal_id food_id], name: 'index_used_foods_on_meal_id_and_food_id', unique: true
+    t.index ['meal_id'], name: 'index_used_foods_on_meal_id'
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "name", null: false
-    t.integer "gender", null: false
-    t.integer "limit_level", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "email"
-    t.string "crypted_password"
-    t.string "salt"
-    t.integer "role", default: 0
-    t.index ["email"], name: "index_users_on_email", unique: true
+  create_table 'users', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci',
+                        force: :cascade do |t|
+    t.string 'name', null: false
+    t.integer 'gender', null: false
+    t.integer 'limit_level', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.string 'email'
+    t.string 'crypted_password'
+    t.string 'salt'
+    t.integer 'role', default: 0
+    t.index ['email'], name: 'index_users_on_email', unique: true
   end
 
-  add_foreign_key "comments", "meals"
-  add_foreign_key "comments", "users"
-  add_foreign_key "foods", "genres"
-  add_foreign_key "meals", "users"
-  add_foreign_key "used_foods", "foods"
-  add_foreign_key "used_foods", "meals"
+  add_foreign_key 'comments', 'meals'
+  add_foreign_key 'comments', 'users'
+  add_foreign_key 'foods', 'genres'
+  add_foreign_key 'meals', 'users'
+  add_foreign_key 'used_foods', 'foods'
+  add_foreign_key 'used_foods', 'meals'
 end

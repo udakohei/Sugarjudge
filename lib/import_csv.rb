@@ -1,4 +1,4 @@
-require "csv"
+require 'csv'
 
 class ImportCsv
   def self.execute(model:, file_name: nil)
@@ -11,7 +11,7 @@ class ImportCsv
     CSV.foreach(path, headers: true) do |row|
       list << row.to_h
     end
-   
+
     model_name.constantize.import!(list, on_duplicate_key_update: :all)
   end
 end

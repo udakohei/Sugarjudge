@@ -1,7 +1,6 @@
 class UserSessionsController < ApplicationController
   before_action :require_login, only: %i[destroy]
-  def new
-  end
+  def new; end
 
   def create
     @user = login(params[:email], params[:password])

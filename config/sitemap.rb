@@ -1,8 +1,8 @@
 # Set the host name for URL creation
-SitemapGenerator::Sitemap.default_host = "https://www.sugarjudge.com"
-SitemapGenerator::Sitemap.sitemaps_host = "https://easy-sugar-management.s3.ap-northeast-1.amazonaws.com"
+SitemapGenerator::Sitemap.default_host = 'https://www.sugarjudge.com'
+SitemapGenerator::Sitemap.sitemaps_host = 'https://easy-sugar-management.s3.ap-northeast-1.amazonaws.com'
 SitemapGenerator::Sitemap.adapter = SitemapGenerator::AwsSdkAdapter.new(
-  "easy-sugar-management",
+  'easy-sugar-management',
   aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
   aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
   aws_region: ENV['AWS_DEFAULT_REGION']
