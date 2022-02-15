@@ -19,7 +19,9 @@ class User < ApplicationRecord
     user.validates :password, confirmation: true, presence: true, length: { minimum: 3 }, if: lambda {
                                                                                                 new_record? || changes[:crypted_password]
                                                                                               }
-    user.validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
+    user.validates :password_confirmation, presence: true, if: lambda {
+                                                                 new_record? || changes[:crypted_password]
+                                                               }
   end
 
   def sugar_limit
@@ -63,7 +65,7 @@ class User < ApplicationRecord
   end
 
   def red?
-    sum_balance_of_payments > 0
+    sum_balance_of_payments.positive?
   end
 
   def result_color

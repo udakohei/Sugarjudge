@@ -27,7 +27,7 @@ class Meal < ApplicationRecord
   end
 
   def red?
-    balance_of_payments > 0
+    balance_of_payments.positive?
   end
 
   def result
@@ -81,11 +81,11 @@ class Meal < ApplicationRecord
   end
 
   def used_foods_list
-    foods.map { |food| food.name }.join('と')
+    foods.map(&:name).join('と')
   end
 
   def eliminate_red
-    if balance_of_payments > 0 && balance_of_payments <= 15
+    if balance_of_payments.positive? && balance_of_payments <= 15
       'また、歌うことができるくらいの強度で運動すれば赤字が帳消しされます。ヨガやウォーキングをしましょう。'
     elsif balance_of_payments > 15 && balance_of_payments <= 35
       'また、会話はできるが歌うのは難しいくらいの強度で運動すれば赤字が帳消しされます。長めのジョギングをしましょう。'
