@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   def new
-    if logged_in?
-      @user = using_user
-    else
-      @user = User.login.new
-    end
+    @user = if logged_in?
+              using_user
+            else
+              User.login.new
+            end
   end
 
   def show
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   end
 
   private
-  
+
   def user_params
     params.require(:user).permit(:name, :gender, :limit_level, :email, :password, :password_confirmation, :role)
   end

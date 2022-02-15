@@ -10,7 +10,7 @@
   Meal.create!(
     balance_of_payments: Faker::Number.number(digits: 3),
     user: User.first,
-    title: "テストデータ",
-    meal_image: File.open("app/assets/images/top_image.png")
+    title: 'テストデータ',
+    meal_image: File.open('app/assets/images/top_image.png')
   )
 end

@@ -1,7 +1,7 @@
 class Meal < ApplicationRecord
-  require "google/cloud/vision"
-  require "google/cloud/translate/v2"
-  
+  require 'google/cloud/vision'
+  require 'google/cloud/translate/v2'
+
   belongs_to :user
   has_many :used_foods, dependent: :destroy
   has_many :foods, through: :used_foods
@@ -10,7 +10,7 @@ class Meal < ApplicationRecord
   mount_uploader :meal_image, MealImageUploader
 
   validates :meal_image, presence: true
-  validates :apologize, length: { minimum: 1, maximum: 255 }
+  validates :apologize, length: { maximum: 255 }
 
   scope :with_result, -> { where.not(balance_of_payments: nil) }
 
@@ -27,14 +27,14 @@ class Meal < ApplicationRecord
   end
 
   def red?
-    balance_of_payments > 0
+    balance_of_payments.positive?
   end
 
   def result
     if red?
-      "糖質赤字です"
+      '糖質赤字です'
     else
-      "糖質黒字です"
+      '糖質黒字です'
     end
   end
 
@@ -81,22 +81,22 @@ class Meal < ApplicationRecord
   end
 
   def used_foods_list
-    foods.map{ |food| food.name }.join('と')
+    foods.map(&:name).join('と')
   end
 
   def eliminate_red
-    if balance_of_payments > 0 && balance_of_payments <= 15
-      "また、歌うことができるくらいの強度で運動すれば赤字が帳消しされます。ヨガやウォーキングをしましょう。"
+    if balance_of_payments.positive? && balance_of_payments <= 15
+      'また、歌うことができるくらいの強度で運動すれば赤字が帳消しされます。ヨガやウォーキングをしましょう。'
     elsif balance_of_payments > 15 && balance_of_payments <= 35
-      "また、会話はできるが歌うのは難しいくらいの強度で運動すれば赤字が帳消しされます。長めのジョギングをしましょう。"
+      'また、会話はできるが歌うのは難しいくらいの強度で運動すれば赤字が帳消しされます。長めのジョギングをしましょう。'
     elsif balance_of_payments > 35 && balance_of_payments <= 45
-      "また、短い時間、会話できないくらい運動すれば赤字が帳消しされます。ダッシュなど短距離走をしましょう。"
+      'また、短い時間、会話できないくらい運動すれば赤字が帳消しされます。ダッシュなど短距離走をしましょう。'
     elsif balance_of_payments > 45 && balance_of_payments <= 75
-      "また、長時間、会話できないくらい運動すれば赤字が帳消しされます。マラソンなど長距離走をしましょう。"
+      'また、長時間、会話できないくらい運動すれば赤字が帳消しされます。マラソンなど長距離走をしましょう。'
     elsif balance_of_payments > 75
-      "破産するしか道はなさそうです。"
+      '破産するしか道はなさそうです。'
     else
-      "食事以外であなたは自由です！好きなことをしてください！"
+      '食事以外であなたは自由です！好きなことをしてください！'
     end
   end
 
@@ -109,7 +109,7 @@ class Meal < ApplicationRecord
   end
 
   def image_analysis(meal_image)
-    File.open("app/google-credentials.json", 'w') do |file|
+    File.open('app/google-credentials.json', 'w') do |file|
       if Rails.env.production?
         JSON.dump(Rails.application.credentials.production_google, file)
       else
@@ -117,14 +117,13 @@ class Meal < ApplicationRecord
       end
     end
 
-    ENV["GOOGLE_APPLICATION_CREDENTIALS"] = "app/google-credentials.json"
-  
+    ENV['GOOGLE_APPLICATION_CREDENTIALS'] = 'app/google-credentials.json'
+
     image_annotator = Google::Cloud::Vision.image_annotator
     translate = Google::Cloud::Translate::V2.new
 
-
     response = image_annotator.label_detection(
-      image:   meal_image,
+      image:   meal_image
     )
 
     results = []
@@ -135,8 +134,8 @@ class Meal < ApplicationRecord
         results << translation.text
       end
     end
-    
-    File.delete("app/google-credentials.json")
+
+    File.delete('app/google-credentials.json')
 
     results.join(',')
   end

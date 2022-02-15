@@ -9,25 +9,23 @@ class MealsController < ApplicationController
     @comment = using_user.comments.new if using_user
     @comments = @meal.comments.order(created_at: :desc)
   end
-  
+
   def new
     @meal = Meal.new
   end
 
   def create
-    begin
-        @meal = using_user.meals.build(meal_params)
-      if @meal.save
-        sent_image = File.open(meal_params["meal_image"].tempfile)
-        @meal.update!(analyzed_foods: @meal.image_analysis(sent_image))
-        redirect_to edit_meal_path(@meal), success: t('.success')
-      else
-        flash.now[:danger] = t('.failure')
-        render :new
-      end
-    rescue ActionController::ParameterMissing
-      redirect_to new_meal_path, danger: t('.need_image')
+    @meal = using_user.meals.build(meal_params)
+    if @meal.save
+      sent_image = File.open(meal_params['meal_image'].tempfile)
+      @meal.update!(analyzed_foods: @meal.image_analysis(sent_image))
+      redirect_to edit_meal_path(@meal), success: t('.success')
+    else
+      flash.now[:danger] = t('.failure')
+      render :new
     end
+  rescue ActionController::ParameterMissing
+    redirect_to new_meal_path, danger: t('.need_image')
   end
 
   def edit
@@ -57,7 +55,7 @@ class MealsController < ApplicationController
   end
 
   private
-  
+
   def meal_params
     params.require(:meal).permit(:meal_image)
   end

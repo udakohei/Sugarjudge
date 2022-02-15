@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     comment.destroy!
     redirect_to meal_path(meal), success: t('.success')
   end
-  
+
   private
 
   def comment_params
