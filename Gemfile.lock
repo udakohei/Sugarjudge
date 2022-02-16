@@ -1300,11 +1300,17 @@ GEM
     concurrent-ruby (1.1.9)
     crass (1.0.6)
     debug_inspector (1.1.0)
+    diff-lcs (1.5.0)
     enum_help (0.0.17)
       activesupport (>= 3.0.0)
     erubi (1.10.0)
     erubis (2.7.0)
     excon (0.89.0)
+    factory_bot (6.2.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     faker (2.19.0)
       i18n (>= 1.6, < 2)
     faraday (1.8.0)
@@ -1517,6 +1523,23 @@ GEM
     regexp_parser (2.1.1)
     require_all (3.0.0)
     rexml (3.2.5)
+    rspec-core (3.11.0)
+      rspec-support (~> 3.11.0)
+    rspec-expectations (3.11.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.11.0)
+    rspec-mocks (3.11.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.11.0)
+    rspec-rails (5.1.0)
+      actionpack (>= 5.2)
+      activesupport (>= 5.2)
+      railties (>= 5.2)
+      rspec-core (~> 3.10)
+      rspec-expectations (~> 3.10)
+      rspec-mocks (~> 3.10)
+      rspec-support (~> 3.10)
+    rspec-support (3.11.0)
     rubocop (1.22.3)
       parallel (~> 1.10)
       parser (>= 3.0.0.0)
@@ -1602,6 +1625,7 @@ DEPENDENCIES
   byebug
   carrierwave
   enum_help
+  factory_bot_rails
   faker
   fog-aws
   google-cloud-translate
@@ -1616,6 +1640,7 @@ DEPENDENCIES
   rails (~> 6.0.4, >= 6.0.4.1)
   rails-i18n (~> 6.0.0)
   rails_best_practices
+  rspec-rails
   rubocop
   sass-rails (>= 6)
   sitemap_generator
