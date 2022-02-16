@@ -36,7 +36,7 @@ module EasysugarManagement
       g.skip_routes true
       g.assets false
       g.helper false
-      g.test_framework false
+      g.test_framework :rspec
     end
 
     config.i18n.default_locale = :ja
