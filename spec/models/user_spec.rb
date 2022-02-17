@@ -74,7 +74,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'is valid with unique email' do
-      login_user = create(:user, :login_user)
+      create(:user, :login_user)
       login_user_with_unique_email = build(:user, :login_user)
       expect(login_user_with_unique_email).to be_valid
     end

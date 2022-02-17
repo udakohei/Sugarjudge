@@ -13,7 +13,7 @@ RSpec.describe Genre, type: :model do
   end
 
   it 'is valid with unique name' do
-    genre = create(:genre)
+    create(:genre)
     genre_with_unique_name = build(:genre)
     expect(genre_with_unique_name).to be_valid
   end

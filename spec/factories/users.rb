@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :user do
-    name { 'テスト太郎' }
-    gender { :male }
-    limit_level { :low }
+    name { 'テストさん' }
+    gender { rand(2) }
+    limit_level { rand(3) }
 
     trait :login_user do
       role { :login }
