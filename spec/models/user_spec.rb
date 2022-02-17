@@ -56,21 +56,27 @@ RSpec.describe User, type: :model do
     end
 
     it 'is invalid without email' do
-      login_user_without_email = build(:user, :login_user, email: nil)
+      login_user_without_email = build(:user, :login_user, email: '')
       expect(login_user_without_email).to be_invalid
       expect(login_user_without_email.errors[:email]).to include 'を入力してください'
     end
 
     it 'is invalid without password' do
-      login_user_without_password = build(:user, :login_user, password: nil)
+      login_user_without_password = build(:user, :login_user, password: '')
       expect(login_user_without_password).to be_invalid
       expect(login_user_without_password.errors[:password]).to include 'を入力してください'
     end
 
     it 'is invalid without password_confirmation' do
-      login_user_without_password_confirmation = build(:user, :login_user, password_confirmation: nil)
+      login_user_without_password_confirmation = build(:user, :login_user, password_confirmation: '')
       expect(login_user_without_password_confirmation).to be_invalid
       expect(login_user_without_password_confirmation.errors[:password_confirmation]).to include 'を入力してください'
+    end
+
+    it 'is valid with unique email' do
+      login_user = create(:user, :login_user)
+      login_user_with_unique_email = build(:user, :login_user, email: 'other@example.com')
+      expect(login_user_with_unique_email).to be_valid
     end
 
     it 'is invalid with duplicate email' do
