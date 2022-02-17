@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :genre do
-    name { 'テストジャンル' }
+    name { |n| "テストジャンル#{n}" }
   end
 end
