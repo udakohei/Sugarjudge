@@ -48,8 +48,8 @@ https://www.sugarjudge.com/
 * AWS S3
 
 ## ゲストユーザーログイン
-メールアドレス：　guest@example.com
-パスワード：　guest
+* メールアドレス：　guest@example.com
+* パスワード：　guest
 
 
 ## 画面遷移図
