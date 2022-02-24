@@ -1,7 +1,6 @@
 # Sugarjudge
 〜面倒くさがり屋のための糖質収支ジャッジアプリ〜
 
-
 https://www.sugarjudge.com/
 ![9pz4Ykqg6Htc1JR1643600668_1643600722](https://user-images.githubusercontent.com/87481460/155538155-6ff21505-0eb1-4de7-af01-f69de0f442dd.png)
 ## サービス概要
