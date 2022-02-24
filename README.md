@@ -57,3 +57,6 @@ https://www.figma.com/file/pJCjl536ti0H8VD3bAlPsw/%E3%83%9D%E3%83%BC%E3%83%88%E3
 
 ## ER図
 https://drive.google.com/file/d/1Uf8_xfh0YygcwGZJyayWt5hlNnyLW9HN/view?usp=sharing
+
+## Qiita記事
+https://qiita.com/uda_kohei/items/6d8f44df9eeaa805bedd
