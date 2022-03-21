@@ -53,6 +53,11 @@ group :development do
   gem 'rubocop'
 end
 
+group :test do
+  gem 'capybara'
+  gem 'webdrivers'
+end
+
 group :prodution do
   gem 'pg'
 end
